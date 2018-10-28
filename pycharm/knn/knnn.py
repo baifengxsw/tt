@@ -11,13 +11,36 @@ def createDataSet():#样本数据
     labels = ['A','A','B','B']
     return group,labels
 #k-临近算法
+'''
+len()：返回对象的长度，注意不是length()函数 
+len([1,2,3])，返回值为3 
+len([[1,2,3],[3,4,5]])，返回值为2
+
+count()：计算包含对象个数 
+[1,1,1,2].count(1)，返回值为3 
+‘asddf’.count(‘d’)，返回值为2
+
+size()和shape () 是numpy模块中才有的函数
+
+size()：计算数组和矩阵所有数据的个数 
+a = np.array([[1,2,3],[4,5,6]]) 
+np.size(a)，返回值为 6 
+np.size(a,1)，返回值为 3
+
+shape ():得到矩阵每维的大小 
+np. shape (a)，返回值为 (2,3)
+
+另外要注意的是，shape和size既可以作为函数，也可以作为ndarray的属性 
+a.size，返回值为 6, 
+a.shape，返回值为 (2,3)
+'''
 def classify(inx,dataSet,labels,k):
-    dataSetSize = dataSet.shape[0]
-    diffMat = tile(inx,(dataSetSize,1)) - dataSet
-    sqDiffMat = diffMat**2
-    sqDistance = sqDiffMat.sum(axis=1)
+    dataSetSize = dataSet.shape[0] #返回数据所对应有多少行
+    diffMat = tile(inx,(dataSetSize,1)) - dataSet #tile 按后方的set 进行横向和竖直方向的赋值
+    sqDiffMat = diffMat**2 #矩阵内部元素的平方
+    sqDistance = sqDiffMat.sum(axis=1)#axis=1 是行所对应的相加
     distance = sqDistance**0.5
-    sortedDistIndicies = distance.argsort()
+    sortedDistIndicies = distance.argsort()#对数据进行排序 返回对应的索引
     classCount = {}
     #k表示选取几个点作为出现频率最高的类别作为预测分类
     for i in range(k):
