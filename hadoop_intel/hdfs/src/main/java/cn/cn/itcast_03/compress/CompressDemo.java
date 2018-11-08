@@ -13,7 +13,7 @@ public class CompressDemo {
         Class [] arr = {DeflateCodec.class, GzipCodec.class,
                 BZip2Codec.class};
         for(Class c : arr){
-            zip(c);
+            unzip(c);
         }
     }
 
@@ -27,4 +27,16 @@ public class CompressDemo {
         System.out.println(codeClass.getSimpleName()+":"+(end-start));
 
     }
+    public static void unzip(Class codecClass) throws Exception{
+        long start = System.currentTimeMillis();
+        CompressionCodec codec = (CompressionCodec)ReflectionUtils.newInstance(codecClass,new Configuration());
+        //创建文件输入流
+        FileInputStream fis = new FileInputStream("e:\\ceshi\\"+codecClass.getSimpleName()+codec.getDefaultExtension());
+        CompressionInputStream cis  = codec.createInputStream(fis);
+        IOUtils.copyBytes(cis,new FileOutputStream("e:\\ceshi\\"+codecClass.getSimpleName()+".pptx"),1024);
+        cis.close();
+        long end  = System.currentTimeMillis();
+        System.out.println(codecClass.getSimpleName()+"unzip:"+(end-start));
+    }
+
 }
