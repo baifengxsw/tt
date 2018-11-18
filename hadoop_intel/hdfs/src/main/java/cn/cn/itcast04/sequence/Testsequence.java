@@ -17,9 +17,9 @@ public class Testsequence {
 
     public static  void save() throws IOException {
         Configuration con =  new Configuration();
-
+        con.set("fs.defaultFS","file:///");
         FileSystem fs = FileSystem.get(con);
-        Path p = new Path("/usr/seq/1.seq");
+        Path p = new Path("E:/mr/seq/1.seq");
         SequenceFile.Writer writer = SequenceFile.createWriter(fs,con,p, IntWritable.class, Text.class);
         for (int i = 0 ;i<100;i++){
             writer.append(new IntWritable(i),new Text("temp"+i));

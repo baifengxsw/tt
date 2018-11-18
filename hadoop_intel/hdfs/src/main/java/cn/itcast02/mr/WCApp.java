@@ -20,7 +20,7 @@ public class WCApp {
 
 
         //设置job的各种属性
-        job.setJobName("WCApp");//作业名称
+        job.setJobName("MaxTempApp");//作业名称
         job.setJarByClass(WCApp.class);//搜索类
         job.setInputFormatClass(TextInputFormat.class);  //设置输入格式
 

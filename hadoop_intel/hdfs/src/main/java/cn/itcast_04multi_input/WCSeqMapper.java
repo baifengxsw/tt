@@ -1,0 +1,24 @@
+package cn.itcast_04multi_input;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+import java.io.IOException;
+
+//前面的两个是输入得k,v ,后面两个是输出的k,v
+//k通常是行的偏移量
+public class WCSeqMapper extends Mapper<IntWritable,Text,Text,IntWritable>{
+    @Override
+    protected void map(IntWritable key, Text value, Context context) throws IOException, InterruptedException {
+       Text keyout = new Text();
+       IntWritable valueout = new IntWritable();
+        String [] arr = value.toString().split(" ");
+       for (String s : arr){
+           keyout.set(s);
+           valueout.set(1);
+           context.write(keyout,valueout);
+           context.getCounter("m", Utils.getInfo(this,"mapseq")).increment(1);
+       }
+    }
+}
