@@ -28,9 +28,9 @@ public class WCApp {
         job.setInputFormatClass(TextInputFormat.class);  //设置输入格式
 
         //添加文件路径 可多条
-        FileInputFormat.addInputPath(job,new Path("e:\\mr\\chain"));
+        FileInputFormat.addInputPath(job,new Path("e:\\cn.itcast05_mysql_1\\chain"));
         //设置输出路径
-        FileOutputFormat.setOutputPath(job,new Path("e:\\mr\\out\\chain"));
+        FileOutputFormat.setOutputPath(job,new Path("e:\\cn.itcast05_mysql_1\\out\\chain"));
         //job.setMapperClass(WCMapMapper1.class); 不需要设置map和reduce 类
         //job.setReducerClass(MCReducer.class);
         ChainMapper.addMapper(job,WCMapMapper1.class,LongWritable.class,Text.class,Text.class,IntWritable.class,conf);

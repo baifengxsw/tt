@@ -22,9 +22,9 @@ public class WCApp {
         job.setInputFormatClass(TextInputFormat.class);  //设置输入格式
 
         //添加文件路径 可多条
-        FileInputFormat.addInputPath(job,new Path("e:\\mr\\skew"));
+        FileInputFormat.addInputPath(job,new Path("e:\\cn.itcast05_mysql_1\\skew"));
         //设置输出路径
-        FileOutputFormat.setOutputPath(job,new Path("e:\\mr\\out\\skew"));
+        FileOutputFormat.setOutputPath(job,new Path("e:\\cn.itcast05_mysql_1\\out\\skew"));
         job.setMapperClass(WCMapper.class);
         job.setReducerClass(MCReducer.class);
         job.setPartitionerClass(RandomPartitioner.class);

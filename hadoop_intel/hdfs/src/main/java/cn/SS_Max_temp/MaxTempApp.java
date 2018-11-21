@@ -27,13 +27,13 @@ public class MaxTempApp {
         //并且只有序列化文是直接读取kv格式的
         job.setInputFormatClass(TextInputFormat.class);
         //多个输入
-        //MultipleInputs.addInputPath(job,new Path("e:/mr/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
-       // MultipleInputs.addInputPath(job,new Path("e:/mr/text"),TextInputFormat.class,MaxTempMapper.class);
+        //MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
+       // MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/text"),TextInputFormat.class,MaxTempMapper.class);
          //设置输入
-        FileInputFormat.setInputPaths(job,new Path("file:///e:/mr/MaxTemp/temp.txt"));
+        FileInputFormat.setInputPaths(job,new Path("file:///e:/cn.itcast05_mysql_1/MaxTemp/temp.txt"));
 
         //设置输出
-        FileOutputFormat.setOutputPath(job,new Path("file:///e:/mr/out/MaxTemp"));
+        FileOutputFormat.setOutputPath(job,new Path("file:///e:/cn.itcast05_mysql_1/out/MaxTemp"));
 
 
         job.setMapperClass(MaxTempMapper.class);

@@ -30,13 +30,13 @@ public class MaxTempApp {
         //并且只有序列化文是直接读取kv格式的
         job.setInputFormatClass(SequenceFileInputFormat.class);
         //多个输入
-        //MultipleInputs.addInputPath(job,new Path("e:/mr/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
-       // MultipleInputs.addInputPath(job,new Path("e:/mr/text"),TextInputFormat.class,MaxTempMapper.class);
+        //MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
+       // MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/text"),TextInputFormat.class,MaxTempMapper.class);
          //设置输入
-        FileInputFormat.setInputPaths(job,new Path("file:///e:/mr/MaxTemp/temp.seq"));
+        FileInputFormat.setInputPaths(job,new Path("file:///e:/cn.itcast05_mysql_1/MaxTemp/temp.seq"));
 
         //设置输出
-        FileOutputFormat.setOutputPath(job,new Path("file:///e:/mr/out/MaxTemp"));
+        FileOutputFormat.setOutputPath(job,new Path("file:///e:/cn.itcast05_mysql_1/out/MaxTemp"));
 
 
         job.setMapperClass(MaxTempMapper.class);
@@ -50,7 +50,7 @@ public class MaxTempApp {
         //等待它
 
         job.setPartitionerClass(TotalOrderPartitioner.class);
-        TotalOrderPartitioner.setPartitionFile(job.getConfiguration(),new Path("file:///e:mr/out/par.list"));//写入配置文件
+        TotalOrderPartitioner.setPartitionFile(job.getConfiguration(),new Path("file:///e:cn.itcast05_mysql_1/out/par.list"));//写入配置文件
         //设置map类
         // 这是自己设置的分区类 下面使用系统的分区类
         //job.setPartitionerClass(YearPartitioner.class);

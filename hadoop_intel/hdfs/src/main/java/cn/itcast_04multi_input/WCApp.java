@@ -22,10 +22,10 @@ public class WCApp {
         job.setJarByClass(WCApp.class);//搜索类
         job.setInputFormatClass(TextInputFormat.class);  //设置输入格式
         //多个输入
-        MultipleInputs.addInputPath(job,new Path("e:/mr/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
-        MultipleInputs.addInputPath(job,new Path("e:/mr/text"),TextInputFormat.class,WCTextMapper.class);
+        MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
+        MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/text"),TextInputFormat.class,WCTextMapper.class);
         //设置输出
-        FileOutputFormat.setOutputPath(job,new Path("file:///e:/mr/out"));
+        FileOutputFormat.setOutputPath(job,new Path("file:///e:/cn.itcast05_mysql_1/out"));
 
 
 
