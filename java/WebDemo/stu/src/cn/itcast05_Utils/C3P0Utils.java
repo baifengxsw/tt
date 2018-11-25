@@ -18,6 +18,21 @@ public class C3P0Utils {
 	public static DataSource getDataSource(){
 		return dataSource;
 	}
+	public static String getHobbies(String [] hobbies){
+		StringBuffer str = new StringBuffer();
+		for(int i = 0;i<hobbies.length;i++){
+			str.append(hobbies[i]).append(" ");
+		}
+		return str.toString();
+	}
+	/**
+	 * 判断字符串是否为空
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEmpty(String str){
+		return str==null||str.length()==0;
+	}
 	/**
 	 * 获取连接
 	 * @return

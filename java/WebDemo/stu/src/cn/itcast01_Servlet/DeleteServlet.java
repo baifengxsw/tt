@@ -2,48 +2,46 @@ package cn.itcast01_Servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.itcast02_Dao.StudentDao;
-import cn.itcast03_bin.Student;
-import cn.itcast04_DaoImpl.StudentDaoImpl;
 import cn.itcast06_Service.StudentService;
 import cn.itcast06_Service.StudentServiceImpl;
 
 /**
- * Servlet implementation class ListServlet
+ * 用于处理删除用户记录
+ * @author baifeng
+ *
  */
-public class ListServlet extends HttpServlet {
-	
+public class DeleteServlet extends HttpServlet {
+
 
 	/**
-	 * 查询所有的页面信息 呈现到新的页面上
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int sid = Integer.parseInt(request.getParameter("sid"));
+		StudentService service = new StudentServiceImpl();
+		int ret;
 		try {
-			StudentService service = new StudentServiceImpl();
-			List<Student>list = service.findAll();
-			//存储数据并跳转页面
-			request.getSession().setAttribute("list", list);
-			response.sendRedirect("list.jsp");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			 ret = service.delete(sid);
+			 request.getRequestDispatcher("ListServlet").forward(request, response);;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
-	 * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -1,4 +1,4 @@
-package cn.itcast02_Dao;
+package cn.itcast06_Service;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -6,13 +6,13 @@ import java.util.List;
 import cn.itcast03_bin.Student;
 
 /**
- * 这里定义了针对表的数据库操作
+ * 在这里一个dao对应一个service 对应业务处理规范
  * @author baifeng
- *在这里子类抛出了异常 ,父类也必须抛出异常
+ *
  */
-public interface StudentDao {
+public interface StudentService {
 	/**
-	 * 查询所有的用户信息
+	 * 处理全部学生查询
 	 */
 	List<Student> findAll() throws SQLException;
 	/**
@@ -22,12 +22,7 @@ public interface StudentDao {
 	 * @throws SQLException
 	 */
     int insert(Student student) throws SQLException;
-    /**
-     * 依据sid删除一条记录
-     * @param sid
-     * @return
-     * @throws SQLException
-     */
+    
     int delete(int sid) throws SQLException;
     
     /**
@@ -45,7 +40,6 @@ public interface StudentDao {
      * @throws SQLException
      */
     int update(Student stu) throws SQLException;
-    
     /**
      * 通过得到的sname 和sgender 来查询数据
      *

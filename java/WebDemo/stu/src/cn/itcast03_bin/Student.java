@@ -10,6 +10,32 @@ public class Student {
 	private String hobby;
 	private String info;
 	private Date birthday;
+	
+	
+	
+	public Student(int sid, String sname, String gender, String phone, String hobby, String info, Date birthday) {
+		super();
+		this.sid = sid;
+		this.sname = sname;
+		this.gender = gender;
+		this.phone = phone;
+		this.hobby = hobby;
+		this.info = info;
+		this.birthday = birthday;
+	}
+	public Student( String sname, String gender, String phone, String hobby, String info, Date birthday) {
+		super();
+		this.sname = sname;
+		this.gender = gender;
+		this.phone = phone;
+		this.hobby = hobby;
+		this.info = info;
+		this.birthday = birthday;
+	}
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getSid() {
 		return sid;
 	}
@@ -42,6 +68,11 @@ public class Student {
 	}
 	public String getInfo() {
 		return info;
+	}
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", gender=" + gender + ", phone=" + phone + ", hobby="
+				+ hobby + ", info=" + info + ", birthday=" + birthday + "]";
 	}
 	public void setInfo(String info) {
 		this.info = info;
