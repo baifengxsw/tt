@@ -15,6 +15,7 @@ public class SplitGroup extends WritableComparator{
     public int compare(WritableComparable a, WritableComparable b) {
         ComboKey o1 = (ComboKey)a;
         ComboKey o2 = (ComboKey)b;
+        System.out.println("分组对比器被调用");
         return o1.getYear() - o2.getYear();
     }
 }

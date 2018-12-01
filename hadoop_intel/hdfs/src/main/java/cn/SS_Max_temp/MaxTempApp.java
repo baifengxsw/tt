@@ -30,10 +30,10 @@ public class MaxTempApp {
         //MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
        // MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/text"),TextInputFormat.class,MaxTempMapper.class);
          //设置输入
-        FileInputFormat.setInputPaths(job,new Path("file:///e:/cn.itcast05_mysql_1/MaxTemp/temp.txt"));
+        FileInputFormat.setInputPaths(job,new Path("file:///e:/mr/MaxTemp/temp.txt"));
 
         //设置输出
-        FileOutputFormat.setOutputPath(job,new Path("file:///e:/cn.itcast05_mysql_1/out/MaxTemp"));
+        FileOutputFormat.setOutputPath(job,new Path("file:///e:/mr/out/MaxTemp"));
 
 
         job.setMapperClass(MaxTempMapper.class);

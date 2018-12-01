@@ -14,7 +14,7 @@ public class Test01 {
 		try{SAXReader reader = new SAXReader();
 		//2 指定解析的xml源
 		
-		Document document = reader.read(new File("D:\\tt\\java\\xml\\src\\cn\\itcast01\\demo.xml"));
+		Document document = reader.read(new File("D:\\tt\\java\\xml\\src\\cn\\itcast01\\stus.xml"));
 		//3得到根节点元素
 		Element rootElement = document.getRootElement();
 		System.out.println(rootElement.getName());

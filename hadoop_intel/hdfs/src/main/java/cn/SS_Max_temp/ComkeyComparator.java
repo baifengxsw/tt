@@ -14,6 +14,7 @@ public class ComkeyComparator extends WritableComparator {
     public int compare(WritableComparable a, WritableComparable b) {
         ComboKey o1 = (ComboKey)a;
         ComboKey o2 = (ComboKey)b;
+        System.out.println("排序对比器被调用");
         return o1.compareTo(o2);
     }
 }
