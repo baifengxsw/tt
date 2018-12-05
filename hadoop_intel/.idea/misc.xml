@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/hdfs/pom.xml" />
         <option value="$PROJECT_DIR$/JDBC/pom.xml" />
+        <option value="$PROJECT_DIR$/hivedemo/pom.xml" />
       </list>
     </option>
   </component>
