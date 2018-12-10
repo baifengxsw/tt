@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/co/cask/tephra/tephra-api/0.6.0/tephra-api-0.6.0-sources.jar!/" />
+      <root url="jar://F:/anzhuang/apache-hive-2.1.1-bin/lib/jsr305-3.0.0.jar!/" />
     </SOURCES>
   </library>
 </component>
