@@ -4,10 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页</title>
+<title>登录界面</title>
 </head>
 <body>
-<h2><a href="ListServlet">显示所有学生列表</a></h2>
-
+<h1 align="center"> <font color="red">管理员登录界面</font></h1>
+<form action="LoginServlet" method="post">
+	账号 <input type="text" name="username"><br>
+	密码 <input type ="password" name="password"><br>
+		<input type="submit" value="登录">
+</form>
 </body>
 </html>
