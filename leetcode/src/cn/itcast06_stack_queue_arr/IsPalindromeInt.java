@@ -22,6 +22,8 @@ public class IsPalindromeInt {
 		return true;
 		
 	}
+	
+	//也可以直接求他的逆序 两者 比较 ，去最后一个进行慢慢累加
 	public static void main(String[] args) {
 		int n = 12321;
 		System.out.println("res:"+isPalindromeInt(n));

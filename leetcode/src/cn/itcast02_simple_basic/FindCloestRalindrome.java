@@ -1,4 +1,4 @@
-package cn.itcast02_simple_basic;
+ package cn.itcast02_simple_basic;
 /**
  * 找到一个数的最相近回文数
  * @author baifeng

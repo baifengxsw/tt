@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/ProtobufDemo/ProtobufDemo.iml" filepath="$PROJECT_DIR$/ProtobufDemo/ProtobufDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZooKeeper/ZooKeeper.iml" filepath="$PROJECT_DIR$/ZooKeeper/ZooKeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop_intel.iml" filepath="$PROJECT_DIR$/hadoop_intel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbase/hbase.iml" filepath="$PROJECT_DIR$/hbase/hbase.iml" />
       <module fileurl="file://$PROJECT_DIR$/hdfs/hdfs.iml" filepath="$PROJECT_DIR$/hdfs/hdfs.iml" />
       <module fileurl="file://$PROJECT_DIR$/hivedemo/hivedemo.iml" filepath="$PROJECT_DIR$/hivedemo/hivedemo.iml" />
     </modules>

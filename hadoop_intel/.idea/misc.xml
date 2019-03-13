@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/ProtobufDemo/pom.xml" />
         <option value="$PROJECT_DIR$/Avro/pom.xml" />
         <option value="$PROJECT_DIR$/ZooKeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/hbase/pom.xml" />
       </list>
     </option>
   </component>
