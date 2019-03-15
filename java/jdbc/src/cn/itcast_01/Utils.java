@@ -1,3 +1,4 @@
+
 package cn.itcast_01;
 
 import java.io.FileInputStream;
@@ -35,17 +36,17 @@ public class Utils {
 	}
 	public static Connection getConn( ) {
 		//DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-		 //在这里不注册也可以
-	//2访问数据库要先建立连接 协议 加访问的数据库
+		//在这里不注册也可以
+		//2访问数据库要先建立连接 协议 加访问的数据库
 		Connection conn = null;
-	    try {
-	    	Class.forName(driverclass);
+		try {
+			Class.forName(driverclass);
 			conn = DriverManager.getConnection(URL, USER,PASS);
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-	    return conn;
+		return conn;
 	}
 	public static void closeRs(ResultSet rs) {
 		try {
@@ -59,29 +60,28 @@ public class Utils {
 			
 		}
 	}
-		public static void closeSt(Statement st) {
-			try {
-				if(st != null) {
-					st.close();
-				}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}finally {
-				st=null;
-				
+	public static void closeSt(Statement st) {
+		try {
+			if(st != null) {
+				st.close();
 			}
-		}
-		public static void closeConn(Connection conn) {
-			try {
-				if(conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}finally {
-				conn=null;
-				
-			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			st=null;
+			
 		}
 	}
-
+	public static void closeConn(Connection conn) {
+		try {
+			if(conn != null) {
+				conn.close();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			conn=null;
+			
+		}
+	}
+}

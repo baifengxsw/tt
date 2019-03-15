@@ -52,9 +52,10 @@ public class Ceshi {
 		printNode(head);
 		
 		System.out.println("-------------------------------");
-		Node res = setValue1(head);
+		setValue(head);
+		//Node res = setValue1(head);
 		
-		printNode(res);
+		printNode(head);
 		
 	}
 }
