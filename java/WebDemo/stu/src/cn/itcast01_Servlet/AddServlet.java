@@ -32,7 +32,6 @@ public class AddServlet extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 		String [] hobbys = request.getParameterValues("hobby");
 		String hobby = C3P0Utils.getHobbies(hobbys);
-		
 		String info = request.getParameter("info");
 		// 添加到数据库
 		Date date =null;

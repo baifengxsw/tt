@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -53,42 +54,47 @@
 										收货人
 									</td>
 									<td align="center" width="10%">
-										订单状态
+										订单状态1=未付款、2=发货、3=已发货、4=订单完成
 									</td>
 									<td align="center" width="50%">
 										订单详情
 									</td>
 								</tr>
+								<c:forEach items="${page.data}" var="o" varStatus="status">
 										<tr onmouseover="this.style.backgroundColor = 'white'"
 											onmouseout="this.style.backgroundColor = '#F5FAFE';">
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="18%">
-												1
+												width="10%">
+												${status.count}
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												BH1234356
+												width="10%">
+												${o.oid}
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												998
+												width="10%">
+												${o.total}
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												张XX
+												width="10%">
+												${o.name}
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-													1=未付款、2=发货、3=已发货、4=订单完成
+												width="10%">
+												<c:if test="${o.state==1}">未付款</c:if>
+												<c:if test="${o.state==2}">发货</c:if>
+												<c:if test="${o.state==3}">已发货</c:if>
+												<c:if test="${o.state==4}">订单完成</c:if>
 											</td>
-											<td align="center" style="HEIGHT: 22px">
-												<input type="button" value="订单详情" id="but${o.oid}" onclick="showDetail('${o.oid}')"/>
-												<div id="div${o.oid}">
-													
-												</div>
+											<td align="center" style="HEIGHT: 22px" width="50%">
+												<input type="button" value="订单详情" id ="${o.oid}" class="myClass" />
+												<table border="1" width="100%" >
+								
+												</table>
 											</td>
 							
 										</tr>
+										</c:forEach>
 							</table>
 						</td>
 					</tr>
@@ -99,7 +105,40 @@
 					</tr>
 				</TBODY>
 			</table>
+			<%@include file="/jsp/pageFile.jsp" %>
 		</form>
 	</body>
+	<script >
+		$(function(){
+			$(".myClass").click(function(){
+				//向服务端发送Ajax请求
+				var id = this.id;
+				//获取当前按钮文字
+				var txt = this.value;
+				var $tb = $(this).next();//得到下一个元素
+				if(txt =="订单详情"){
+				var url = "/store01/AdminOrderServlet";
+				var obj = {"method":"findOrderByOidWithAjax","id":id};
+				$.post(url,obj,function(data){
+					//使用Jquery遍历到客户端的数据
+					
+					$tb.html("");
+						var th = "<tr><th>商品</th><th>名称</th><th>单价</th><th>数量</th></tr>";
+						$tb.append(th);
+					$.each(data,function(i,obj){
+						var tb = "<tr><td><img src = '/store01/"+obj.product.pimage+"' width ='50px'></td><td>"+obj.product.pname+"</td><td>"+obj.product.shop_price+"</td><td>"+obj.quantity+"</td></tr>";
+						$tb.append(tb);
+						
+					})
+				},"json");
+				this.value="关闭";
+				}else{
+					this.value="订单详情";
+					//清空表格内容
+					$tb.html("");
+				}
+			})
+		});
+	</script>
 </HTML>
 

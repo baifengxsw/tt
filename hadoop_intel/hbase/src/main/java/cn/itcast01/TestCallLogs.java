@@ -13,6 +13,7 @@ import org.junit.Test;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 
 public class TestCallLogs {
@@ -27,7 +28,7 @@ public class TestCallLogs {
         Configuration conf = HBaseConfiguration.create();
         Connection conn = ConnectionFactory.createConnection(conf);
         TableName tName = TableName.valueOf("nn1:calllogs");
-
+        HashMap
         Table table = conn.getTable(tName);
 
         String callerId = "13845456767";

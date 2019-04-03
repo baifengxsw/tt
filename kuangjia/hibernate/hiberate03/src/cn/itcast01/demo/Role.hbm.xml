@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        <hibernate-mapping>
+    <class name="cn.itcast01.demo.Role" table="sys_role">
+    	<id name="role_id" column="role_id">
+    	<generator class="native"/>
+    	</id>
+    	<!-- 建立普通属性和字段的映射 -->
+    	<property name="role_memo" column="role_memo"/>
+    	<property name="role_name" column="role_name"/>
+    	<!-- set 标签
+    		*name 对方集合的属性名称
+    		*table 多对多的关系需要使用中间表
+    	 -->
+    <set name="users" table="sys_user_role" inverse="true">
+    <!-- 	key标签对应当前类在中间表对应的id -->
+    	<key column="role_id"/>
+    	<!-- many to many  class 对方类的全路径,column对方在中间表的对应的表名-->
+    	<many-to-many class="cn.itcast01.demo.User" column="user_id"/>
+    </set>
+    </class>
+    </hibernate-mapping>

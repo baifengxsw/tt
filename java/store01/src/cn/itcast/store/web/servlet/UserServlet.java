@@ -1,6 +1,7 @@
 package cn.itcast.store.web.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class UserServlet extends BaseServlet {
 			try {
 				us.userRegist(user);
 				//注册成功，向用户邮箱发送消息
-				MailUtils.sendMail("aaa@store.com", user.getCode());
+				MailUtils.sendMail(user.getEmail(), user.getCode());
 				request.setAttribute("msg", "注册成功，请激活");
 			} catch (Exception e) {
 				// TODO 自动生成的 catch 块
@@ -57,6 +58,65 @@ public class UserServlet extends BaseServlet {
 			
 			
 	}
+		public String active(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//获取激活码
+			String code = request.getParameter("code");
+			UserService userService = new UserServiceImpl();
+			boolean flag = false;
+			try {
+				flag = userService.userActive(code);
+			} catch (SQLException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			//进行激活提示
+			if(flag == true) {
+				//激活成功
+				request.setAttribute("msg", "用户激活成功,请登录");
+				
+			}else {
+				request.setAttribute("msg", "用户激活失败,请重新激活");
+			}
+			return "/jsp/info.jsp";
+		}
+		
+		public String loginUI(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			return "/jsp/login.jsp";
+		}
+		public String userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			User user  = new User();
+			MyBeanUtils.populate(user, request.getParameterMap());
+		
+			//调用业务层登录功能
+			UserService userService = new UserServiceImpl();
+			User user02 = null;
+			try {
+				user02 = userService.userLogin(user); //
+				if(user02!=null) {
+					request.getSession().setAttribute("login", user02);
+					response.sendRedirect("/store01/index.jsp");
+					
+				}
+			} catch (Exception e) {
+				//登录失败的情形
+				String msg = e.getMessage();
+				System.out.println(msg);
+				request.setAttribute("msg", msg);
+				return "/jsp/login.jsp";
+			}
+			
+			return null;
+			
+			
+		}
+		
+		public String logOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//让会话消息失效
+			request.getSession().invalidate();
+			response.sendRedirect("/store01/index.jsp");
+			return null;
+		}
 
 	
 

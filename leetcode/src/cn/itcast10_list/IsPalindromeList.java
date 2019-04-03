@@ -2,6 +2,8 @@ package cn.itcast10_list;
 
 import java.util.Stack;
 
+import cn.itcast10_list.IsPalindromeList.Node;
+
 /**
  * 判断链表是否是回文链表  无头节点
  * @author baifeng
@@ -19,7 +21,7 @@ public class IsPalindromeList {
 	public static boolean isPalindrome1(Node head) {
 		if(head==null||head.next==null)
 			return true ;
-		Stack<Node> stack = new Stack();
+		Stack<Node> stack = new Stack<Node>();
 		Node cur = head;
 		while(cur!=null) {
 			stack.push(cur);

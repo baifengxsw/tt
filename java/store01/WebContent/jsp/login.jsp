@@ -39,63 +39,7 @@ font {
 	
 	
 	
-			<!--
-            	描述：菜单栏
-            -->
-			<div class="container-fluid">
-				<div class="col-md-4">
-					<img src="${pageContext.request.contextPath}/img/logo2.png" />
-				</div>
-				<div class="col-md-5">
-					<img src="${pageContext.request.contextPath}/img/header.png" />
-				</div>
-				<div class="col-md-3" style="padding-top:20px">
-					<ol class="list-inline">
-						<li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
-						<li><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
-						<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
-						<li><a href="${pageContext.request.contextPath}/jsp/order_list.jsp">我的订单</a></li>
-					</ol>
-				</div>
-			</div>
-			<!--
-            	描述：导航条
-            -->
-			<div class="container-fluid">
-				<nav class="navbar navbar-inverse">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">首页</a>
-						</div>
-
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">手机数码<span class="sr-only">(current)</span></a></li>
-								<li><a href="#">电脑办公</a></li>
-								<li><a href="#">电脑办公</a></li>
-								<li><a href="#">电脑办公</a></li>
-							</ul>
-							<form class="navbar-form navbar-right" role="search">
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Search">
-								</div>
-								<button type="submit" class="btn btn-default">Submit</button>
-							</form>
-
-						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-					<!-- /.container-fluid -->
-				</nav>
-			</div>
+			<%@include file="/jsp/header.jsp" %>
 
 	
 	
@@ -113,25 +57,26 @@ font {
 				<div style="width:440px;border:1px solid #E7E7E7;padding:20px 0 20px 30px;border-radius:5px;margin-top:60px;background:#fff;">
 				<font>会员登录</font>USER LOGIN
 
-				<div>&nbsp;</div>
-<form class="form-horizontal">
+				<div>${msg}</div>
+<form class="form-horizontal" action="${pageContext.request.contextPath}/UserServlet">
+	<input type = "hidden"name = "method" value = "userLogin">
   
  <div class="form-group">
     <label for="username" class="col-sm-2 control-label">用户名</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="username" placeholder="请输入用户名">
+      <input type="text" class="form-control" name ="username"id="username" placeholder="请输入用户名">
     </div>
   </div>
    <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
     <div class="col-sm-6">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+      <input type="password" class="form-control" name = "password" id="inputPassword3" placeholder="请输入密码">
     </div>
   </div>
    <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="请输入验证码">
+      <input type="text" class="form-control" name = "vercode" id="inputPassword3" placeholder="请输入验证码">
     </div>
     <div class="col-sm-3">
       <img src="${pageContext.request.contextPath}/img/captcha.jhtml"/>

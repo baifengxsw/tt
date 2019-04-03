@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="cn.itcast01.demo.User" table="sys_user">
+    	<id name="user_id" column="user_id">
+    	<generator class="native"/>
+    	</id>
+    	<!-- 建立普通属性和字段的映射 -->
+    	<property name="user_code" column="user_code"/>
+    	<property name="user_name" column="user_name"/>
+    	<property name="user_password" column="user_password"/>
+    	<property name="user_state" column="user_state"/>
+    	<!-- set 标签
+    		*name 对方集合的属性名称
+    		*table 多对多的关系需要使用中间表
+    	 -->
+    <set name="roles" table="sys_user_role">
+    <!-- 	key标签对应当前类在中间表对应的id -->
+    	<key column="user_id"/>
+    	<!-- many to many  class 对方类的全路径,column对方在中间表的对应的表名-->
+    	<many-to-many class="cn.itcast01.demo.Role" column="role_id"/>
+    </set>
+    </class>
+    </hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- struts2为了管理Action的配置，通过包进行管理 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<!-- 配置struts2的包 包名随便 但不可以重复 -->
+	<package name="demo3" extends="struts-default" namespace="/">
+		<!-- 配置action  name 是你访问的路径-->
+		<action name="userUpdate" class="cn.itcast01.demo3.UserAction" method="update"></action>
+		<action name="userDelete" class="cn.itcast01.demo3.UserAction" method="delete"></action>
+		<action name="userSave" class="cn.itcast01.demo3.UserAction" method="save"></action>
+		<action name="userFind" class="cn.itcast01.demo3.UserAction" method="find"></action>
+		<!-- 以通配符的方式进行实现 拿到*号的位置 放在method -->
+		<action name="product*" class="cn.itcast01.demo3.ProductAction" method ="{1}"></action>
+		
+		<!-- 用动态的方法进行访问 先设置动态方法true -->
+		
+		<action name="customer" class="cn.itcast01.demo3.CustomerAction"></action>
+	</package>
+</struts>

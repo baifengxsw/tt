@@ -49,7 +49,7 @@ public class MailUtils {
 		message.setSubject("商城用户激活");
 		// message.setText("杩欐槸涓�灏佹縺娲婚偖浠讹紝璇�<a href='#'>鐐瑰嚮</a>");
 
-		String url = "http://localhost:8080/MyTomcat/UserServlet?method=active&code=" + emailMsg;
+		String url = "http://localhost:8080/store01/UserServlet?method=active&code=" + emailMsg;
 		String content = "<h1>网上商城的激活邮件!</h1><h3><a href='" + url + "'>" + url + "</a></h3>";
 		// 璁剧疆閭欢鍐呭
 		message.setContent(content, "text/html;charset=utf-8");

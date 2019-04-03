@@ -1,7 +1,5 @@
 package cn.itcast10_list;
 
-import cn.itcast10_list.Ceshi.Node;
-
 public class ListPaixu {
 	public static class Node{
 		public int value;

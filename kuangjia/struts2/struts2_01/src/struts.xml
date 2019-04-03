@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置常量 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- struts2为了管理Action的配置，通过包进行管理 -->
+	<!-- class 使用。。。 配置struts2的包 包名随便 但不可以重复 -->
+	
+	<include file="cn/itcast01/demo2/struts_demo1.xml"/>
+	<include file="cn/itcast01/demo1/struts_demo1.xml"/>
+	<include file="cn/itcast01/demo3/struts_demo3.xml"/>
+</struts>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<package name="crm" extends="struts-default" namespace="/">
+	<action name="customer_*" class="cn.itcast.web.action.CustomerAction" method="{1}">
+	<result name="findsuccess">/jsp/customer/list.jsp</result>
+	<result name="saveUI">/jsp/customer/add.jsp</result>
+	<result name="savesuccess" type="redirectAction">customer_find.action</result>
+	</action>
+</package>
+
+</struts> 
