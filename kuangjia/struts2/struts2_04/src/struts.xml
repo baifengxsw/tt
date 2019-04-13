@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置常量 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<!-- struts2为了管理Action的配置，通过包进行管理 -->
+	<package name="demo1" extends="struts-default" namespace="/">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor name="interceptorDemo1" class="cn.itcast01.web.interceptor.InterceptorDemo1"></interceptor>
+			<interceptor name="interceptorDemo2" class="cn.itcast01.web.interceptor.InterceptorDemo2"></interceptor>
+		</interceptors>
+		<action name="actionDemo1" class="cn.itcast01.web.action.ActionDemo1">
+			<result>/demo1/demo1.jsp</result>
+			<!-- 引入拦截器 那么struts2的默认栈的拦截器就不执行了 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="interceptorDemo1"></interceptor-ref>
+			<interceptor-ref name="interceptorDemo2"></interceptor-ref>
+		</action>
+		<action name="loginAction1" class="cn.itcast01.web.action.LoginAction1">
+		<result name="input">/demo2/demo1.jsp</result>
+		</action>
+		<action name="loginAction2" class="cn.itcast01.web.action.LoginAction2">
+		<result name="input">/demo2/demo2.jsp</result>
+		</action>
+		<action name="registAction" class="cn.itcast01.web.action.RegistAction">
+		<result name="input">/demo2/regist.jsp</result>
+		</action>
+		
+	 </package>
+	
+
+</struts>

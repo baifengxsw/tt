@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <!-- spring的入门配置 -->
+        <bean id="userService" class="cn.itcast01_demo1.UserServiceImpl2">
+        	<property name="name" value="杨永信"></property>
+        </bean>
+        
+        <bean id ="customerDao" class="cn.itcast01_demo2.CustomerDaoImpl" init-method="init" destroy-method="destroy"></bean>
+        
+        <!-- 构造方法的注入 -->
+        <bean id="car" class="cn.itcast01.demo2.Car">
+        	<constructor-arg  name="name" value="aodi"></constructor-arg>
+        	<constructor-arg  name="age" value="14"></constructor-arg>
+        	
+        </bean>
+        
+       <!--  
+        <bean id="car2" class="cn.itcast01.demo2.Car2">
+        	<property name="name" value="baoma"></property>
+        	<property name="age" value="17"></property>
+        	
+        </bean> -->
+        <!-- 将car2 改为p名称空间的方式 -->
+        <bean id="car2" class="cn.itcast01.demo2.Car2" p:name="劳斯莱斯" p:age="18"> </bean>
+        
+        
+        <!-- 集合属性的注入 -->
+        	<!-- 注入数组类型 -->
+        	<bean id="collectionBean" class="cn.itcast01.demo3.CollectionBean">
+        	<property name="arr">
+        		<list>
+        			<value>王东</value>
+        			<value>赵红</value>
+        			
+        		</list>
+        	</property>
+        	</bean>
+        
+ </beans>

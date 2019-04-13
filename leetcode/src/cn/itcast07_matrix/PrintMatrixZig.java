@@ -13,29 +13,17 @@ public class PrintMatrixZig {
 		int endR = matrix.length-1;
 		int endC = matrix[0].length -1;
 		boolean flag = false;
-//		while(row1 <= endR) {
-//			printLevel(matrix,row1,col1,row2,col2,flag);
-//			row1 = col1 == endC ? row1+1: row1;
-//			col1 = col1 == endC ? col1 :col1+1;
-//			col2 = row2 == endR ? col2+1 : col2;
-//			row2 = row2 == endR ? row2: row2+1;
-//			flag = !flag;
-//			
-//		}
-		for(int i = 0 ;i<=endR+endC;i++) {
+		while(row1 <= endR) {
 			printLevel(matrix,row1,col1,row2,col2,flag);
-			if(col1<endC) {
-				col1++;
-			}else {
-				row1++;
-			}
-			if(row2<endR) {
-				row2++;
-			}else {
-				col2++;
-			}
+			row1 = col1 == endC ? row1+1: row1;
+			col1 = col1 == endC ? col1 :col1+1;
+			col2 = row2 == endR ? col2+1 : col2;
+			row2 = row2 == endR ? row2: row2+1;
 			flag = !flag;
+			
 		}
+
+	
 		System.out.println();
 	}
 

@@ -1,1 +1,3 @@
+com\it18zhang\hbasedemo\coprocessor\CalleeLogRegionObserver.class
 com\it18zhang\hbasedemo\coprocessor\MyRegionObserver.class
+com\it18zhang\hbasedemo\coprocessor\Util.class

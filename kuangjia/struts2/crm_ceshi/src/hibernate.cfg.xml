@@ -21,5 +21,6 @@
 	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 	<!-- 找到相关的映射 包名之间使用映射 -->
 	<mapping resource="/cn/itcast/domain/Customer.hbm.xml" />
+	<mapping resource="/cn/itcast/domain/User.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

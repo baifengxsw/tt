@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -17,7 +18,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		CustomerService customerService = new CustomerServiceImpl();
 		List<Customer> list = customerService.find();
 		//Ò³ÃæµÄÌø×ª
-		ServletActionContext.getRequest().setAttribute("list", list);
+		ActionContext.getContext().getValueStack().set("list",list);;
 		return "findsuccess";
 	}
 	/**

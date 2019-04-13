@@ -10,7 +10,7 @@ public class YearPartitioner extends Partitioner<ComboKey,NullWritable> {
     @Override
     public int getPartition(ComboKey comboKey, NullWritable nullWritable, int numPartitions) {
         int year = comboKey.getYear();
-        System.out.println("分区中");
+
         return  year% numPartitions;
     }
 

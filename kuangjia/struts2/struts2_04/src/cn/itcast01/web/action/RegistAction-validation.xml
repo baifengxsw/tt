@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+ <validators>
+ 		<!--校验用户名 -->
+ 		<field name="username">
+ 			<field-validator type="requiredstring">
+ 				<message>用户名不能为空</message>
+ 			</field-validator>
+ 		</field>
+ 		
+ 		<!-- 校验密码 -->
+ 		<field name="password">
+ 			<field-validator type="requiredstring">
+ 				<message>密码不能为空</message>
+ 			</field-validator>
+ 			
+ 			<field-validator type="stringlength">
+				<param name="minLength">3</param>
+				<param name="maxLength">7</param>
+				<message>密码长度必须在3到7位之间</message>
+	 		</field-validator>
+	 		
+ 		</field>
+ 		
+ 		<!-- 校验我的确认密码 -->
+ 		<field name="">
+	 		<field-validator type="fieldexpression">
+	 		
+	 			<param name="expression"><![CDATA[(password==repassword)]]></param>
+	 			<message>两次输入的密码不一致</message>
+	 		</field-validator>
+ 	</field>
+ 		
+ 	
+ 		
+ 		<!-- 校验年龄 -->
+ 		<field name="age">
+ 			<field-validator type="int">
+ 				<param name="min">18</param>
+ 				<param name="max">50</param>
+ 				<message>年龄必须要在18岁以上 50岁以下</message>
+ 			</field-validator>
+ 		
+ 		
+ 		</field>
+ 		
+ 		<!-- 校验邮箱 -->
+ 		<field name="email">
+ 			<field-validator type="email">
+ 				<message>请输入正确的邮箱格式</message>
+ 			</field-validator>
+ 		</field>
+ 		
+ 		<!-- 校验电话 -->
+ 		<field name="phone">
+ 			<field-validator type="regex">
+ 				<param name="expression"><![CDATA[^13\d{9}$]]></param>
+ 				<message>电话格式不正确</message>
+ 			</field-validator>
+ 		</field>
+ 		
+ 		<!-- 校验生日 -->
+ 		<field name="birthday" >
+ 		
+ 		<field-validator type="date">
+ 			<param name="min">1974-12-31</param>
+ 			<param name="max">1991-01-01</param>
+ 			<message>日期不合法</message>
+ 		</field-validator>
+ 		
+ 		</field> 
+ </validators>

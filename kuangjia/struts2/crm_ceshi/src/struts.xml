@@ -5,10 +5,28 @@
 
 <struts>
 <package name="crm" extends="struts-default" namespace="/">
+	<interceptors>
+		<interceptor name="privilegeInterceptor" class="cn.itcast.web.interceptor.PrivilegeInterceptor"></interceptor>
+	</interceptors>
+	<global-results>
+		<result name="login" type="redirect">/login.jsp</result>
+	</global-results>
 	<action name="customer_*" class="cn.itcast.web.action.CustomerAction" method="{1}">
 	<result name="findsuccess">/jsp/customer/list.jsp</result>
 	<result name="saveUI">/jsp/customer/add.jsp</result>
 	<result name="savesuccess" type="redirectAction">customer_find.action</result>
+		<interceptor-ref name="privilegeInterceptor">
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	<action name="user_*" class="cn.itcast.web.action.UserAction" method="{1}">
+
+		<!-- 一般登录成功的话都是重定向 -->
+		<result name="success" type="redirect">/index.jsp</result>
+		<interceptor-ref name="privilegeInterceptor">
+			<param name="excludeMethods">login</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
 	</action>
 </package>
 

@@ -11,40 +11,35 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
+import org.apache.hadoop.util.GenericOptionsParser;
+//D:\tt\hadoop_intel\hdfs\src\main\java\cn\SS_Max_temp
 public class MaxTempApp {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS","file:///"); //设置为本地模式
-        Job job = Job.getInstance();
 
+        conf.set("fs.defaultFS","file:///");
+        Job job = Job.getInstance(conf);
 
         //设置job的各种属性
-        job.setJobName("SSMaxTempApp");//作业名称
-        job.setJarByClass(MaxTempApp.class);//搜索类
-        //job.setInputFormatClass(TextInputFormat.class);  //设置输入格式
-        //因为默认是map输入 是每一行和对应的偏移量 ,所以并不是想要的kv对 所以在这里进行修改
-        //并且只有序列化文是直接读取kv格式的
-        job.setInputFormatClass(TextInputFormat.class);
-        //多个输入
-        //MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/seq" ),SequenceFileInputFormat.class,WCSeqMapper.class);
-       // MultipleInputs.addInputPath(job,new Path("e:/cn.itcast05_mysql_1/text"),TextInputFormat.class,MaxTempMapper.class);
-         //设置输入
-        FileInputFormat.setInputPaths(job,new Path("file:///e:/mr/MaxTemp/temp.txt"));
+        job.setJobName("SecondarySortApp");                        //作业名称
+        job.setJarByClass(MaxTempApp.class);                 //搜索类
+        job.setInputFormatClass(TextInputFormat.class); //设置输入格式
 
-        //设置输出
-        FileOutputFormat.setOutputPath(job,new Path("file:///e:/mr/out/MaxTemp"));
+        //添加输入路径
+        FileInputFormat.addInputPath(job,new Path("e:/temp.txt"));
+        //设置输出路径
+        FileOutputFormat.setOutputPath(job,new Path("e:/out"));
 
+        job.setMapperClass(MaxTempMapper.class);             //mapper类
+        job.setReducerClass(MaxTempReducer.class);           //reducer类
 
-        job.setMapperClass(MaxTempMapper.class);
-        job.setReducerClass(MaxTempReducer.class);
-        job.setNumReduceTasks(3);  //设置reduce的个数//这个必须放在前面 不放在前面的话默认只有一个分区 就不需要采样了
-        //这里是reduce端的输出
+        //设置Map输出类型
+        job.setMapOutputKeyClass(ComboKey.class);            //
+        job.setMapOutputValueClass(NullWritable.class);      //
+
+        //设置ReduceOutput类型
         job.setOutputKeyClass(IntWritable.class);
-        job.setOutputValueClass(IntWritable.class);//如果map端和reduce端是一致的,可以不进行设置
-        //这里就不用设置
-        job.setMapOutputKeyClass(ComboKey.class);
-        job.setMapOutputValueClass(NullWritable.class);
+        job.setOutputValueClass(IntWritable.class);         //
 
         //设置分区类
         job.setPartitionerClass(YearPartitioner.class);
@@ -52,7 +47,10 @@ public class MaxTempApp {
         job.setGroupingComparatorClass(SplitGroup.class);
         //设置排序对比器
         job.setSortComparatorClass(ComkeyComparator.class);
-        //等待它
+
+        job.setNumReduceTasks(3);                           //reduce个数
+
+        //
         job.waitForCompletion(true);
 
 

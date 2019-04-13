@@ -1,2 +1,5 @@
+D:\tt\hadoop_intel\hbase\src\main\java\com\it18zhang\hbasedemo\coprocessor\Util.java
 D:\tt\hadoop_intel\hbase\src\main\java\cn\itcast01\TestCRUD.java
+D:\tt\hadoop_intel\hbase\src\main\java\cn\itcast01\TestCallLogs.java
 D:\tt\hadoop_intel\hbase\src\main\java\com\it18zhang\hbasedemo\coprocessor\MyRegionObserver.java
+D:\tt\hadoop_intel\hbase\src\main\java\com\it18zhang\hbasedemo\coprocessor\CalleeLogRegionObserver.java

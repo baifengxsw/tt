@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置常量 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<package name="hello" extends="struts-default" namespace="/">
+		<action name="helloAction" class="cn.itcast.web.action.HelloAction">
+			<result >/index.jsp</result>
+		</action>
+	</package>
+</struts>

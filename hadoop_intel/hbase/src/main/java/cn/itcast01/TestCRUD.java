@@ -1,9 +1,11 @@
 package cn.itcast01;
 
+import javafx.scene.control.Tab;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.*;
+import org.apache.hadoop.hbase.regionserver.BloomType;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.junit.Test;
 
@@ -17,6 +19,20 @@ import java.util.*;
  */
 public class TestCRUD {
     public TestCRUD() throws IOException {
+    }
+
+    @Test
+    public void createBloomFilter()throws Exception{
+        Configuration conf = HBaseConfiguration.create();
+        Connection conn  = ConnectionFactory.createConnection(conf);
+        Admin admin = conn.getAdmin();
+        TableName tableName = TableName.valueOf("nn1:t10");
+        HTableDescriptor tbl = new HTableDescriptor(tableName);
+        HColumnDescriptor col = new HColumnDescriptor("f1");
+        col.setBloomFilterType(BloomType.ROW);
+        tbl.addFamily(col);
+        admin.createTable(tbl);
+        System.out.println("over");
     }
 
     @Test
