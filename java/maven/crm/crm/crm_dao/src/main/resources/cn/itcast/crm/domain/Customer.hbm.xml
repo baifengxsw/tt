@@ -6,7 +6,7 @@
 <hibernate-mapping>
 	<!-- 根标签 -->
 <!-- 建立 类和表的映射 -->
-	<class name="cn.itcast01.domain.Customer" table="cst_customer">
+	<class name="cn.itcast.crm.domain.Customer" table="cst_customer">
 	<!--建立类中的属性和表中的主键进行对应  -->
 	<id name="cust_id" column="cust_id">
 		<generator class ="native"/>

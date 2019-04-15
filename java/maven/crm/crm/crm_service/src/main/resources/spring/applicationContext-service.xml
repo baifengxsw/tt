@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 配置事务管理器  JDBC那边是DataSource事务管理器-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 
+	<tx:annotation-driven transaction-manager="transactionManager"/> -->
+	
+	<!-- 通知 -->
+	<tx:advice id ="advice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>		
+	</tx:advice>
+	<!-- 进行切面的配置   是相应实现类的方法 ，然后到切面进行匹配 当发现find update delete ，开启事务-->
+	<aop:config>
+		<aop:pointcut expression="execution(* cn.itcast.crm.service.impl.*.*(..))" id="pointcut1"/>
+		<aop:advisor advice-ref="advice" pointcut-ref="pointcut1"/>
+	</aop:config>
+	<!-- 进行业务类的配置 -->
+	
+	<bean id ="customerService" class="cn.itcast.crm.service.Impl.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao"></property>
+	</bean>
+	<!-- 仅供测试用 -->
+	
+</beans>
+	
+	

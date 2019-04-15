@@ -1,5 +1,9 @@
 package cn.itcast.crm.dao;
 
-public interface CustomerDao {
+import java.util.List;
 
+import cn.itcast.crm.domain.Customer;
+
+public interface CustomerDao {
+	public List<Customer> findAll();
 }

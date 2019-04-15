@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.itcast.erp.entity.Dep" table="Dep" >
+        <id name="uuid" >   
+        <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+        	<param name="sequence_name">DEP_SEQ</param>
+        </generator>        
+        </id>
+        <property name="name" />   
+        <property name="tele" />   
+         
+    </class>
+</hibernate-mapping>

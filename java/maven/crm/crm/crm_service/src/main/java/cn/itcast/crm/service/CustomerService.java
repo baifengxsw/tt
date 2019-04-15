@@ -1,5 +1,9 @@
 package cn.itcast.crm.service;
 
-public interface CustomerService {
+import java.util.List;
 
+import cn.itcast.crm.domain.Customer;
+
+public interface CustomerService {
+	public List<Customer> findAll();
 }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>部门管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript">
+var method= "";
+$(function(){
+	$('#grid').datagrid({    
+	    url:'dep_getList.action',    
+	    columns:[[    
+	        {field:'uuid',title:'编号',width:100},    
+	        {field:'name',title:'Name',width:100},    
+	        {field:'tele',title:'Telephone',width:100,align:'right'},   
+	        {field:'-',title:'操作',width:100,formatter: function(value,row,index){   
+	        		var oper= '<a href="javascript:void(0)" onclick="update('+row.uuid+')">修改</a>' ;
+	        		oper += "  ";
+					oper +='<a href="javascript:void(0)" onclick="del('+row.uuid+')">删除</a>' ;
+					return oper;
+			}
+	        }
+	    ]],
+	   singleSelect:true,
+	   pagination:true,
+	   
+		toolbar: [{
+			text:'新增',
+			iconCls: 'icon-add',
+			handler: function(){
+				method = 'add';
+				$('#editDlg').dialog('open');
+			}
+		
+		}]
+
+	});  
+	
+	$('#btnSearch').click(function(){
+		
+	//把表单数据转换成json对象
+	var formData = $('#searchForm').serializeJSON();
+	//将json对象转换成字符串
+/* 	$.ajax({
+		url:'dep_getList',
+		data:formData,
+		dataType:'json',
+		success:function(rtn){
+			//grid进行数据的加载
+			$('#grid').datagrid('loadData',rtn);
+		}
+	})
+	 */
+	 //这里调用的上面的路径 有问题  
+	 $('#grid').datagrid('load',formData);
+	});
+	
+	$('#editDlg').dialog({    
+	    title: '部门编辑',    
+	    width: 400,    
+	    height: 200,    
+	    closed: true,   //表示窗口是否为关闭状态 
+
+	    modal: true   
+	}); 
+	
+	$('#btnSave').bind('click',function(){
+		var formData = $('#editForm').serializeJSON();
+		$.ajax({
+				url:'dep_'+method+'.action',
+		data:formData,
+		dataType:'json',
+		success:function(rtn){
+			$.messager.alert("提示",rtn.message,'info',function(){
+				//成功的话 ，我们要关闭窗口
+				$('#editDlg').dialog('close');
+				//刷新表格数据
+				$('#grid').datagrid('reload');
+			})
+			
+		}
+		})
+	})
+});
+
+function del(uuid){
+	$.messager.confirm('确认','您确认想要删除记录吗？',function(r){    
+	    if (r){    
+	        alert(uuid); 
+	        $.ajax({
+	    		url:'dep_delete?uuid='+uuid,
+	    		dataType:'json',
+	    		type:"post",
+	    		success:function(rtn){
+	    			//grid进行数据的加载
+	    			$.messager.alert("提示",rtn.message,'info',function(){
+	    				//刷新表格数据
+	    				$('#grid').datagrid('reload');
+	    			})
+	    		}
+	    	})
+	    }    
+	});  
+}
+
+function update(uuid){
+	//先进行窗口的弹出
+	$('#editDlg').dialog('open');
+	//清空表单内容
+	$('#editForm').form('clear');
+	//加载数据
+	method = 'update'
+	$('#editForm').form('load','dep_get?uuid='+uuid);
+	$('#btnSave').bind('click',function(){
+		var formData = $('#editForm').serializeJSON();
+		$.ajax({
+				url:'dep_'+method+'.action',
+		data:formData,
+		dataType:'json',
+		success:function(rtn){
+			$.messager.alert("提示",rtn.message,'info',function(){
+				//成功的话 ，我们要关闭窗口
+				$('#editDlg').dialog('close');
+				//刷新表格数据
+				$('#grid').datagrid('reload');
+			})
+			
+		}
+		})
+	})
+	  
+}
+</script>
+</head>
+
+	
+<body>
+<div class="easyui-panel"style="padding-left:4px;">
+  <form id="searchForm">
+  	<table>
+  		<tr>
+  		<td>部门名称</td>
+  		<td><input name="dep1.name"/></td>
+  		
+  		</tr>
+  		<tr>
+  		<td>部门电话</td>
+  		<td><input name="dep1.tele"/></td>
+  		
+  		</tr>
+  	</table>
+  		<button id="btnSearch" type="button">查询</button>
+  
+  </form>
+  </div>
+  <table id="grid"></table>
+  <div id ="editDlg">
+  	<form id="editForm">
+  	<table>
+  		<tr>
+  		<td>部门名称</td>
+  		<td><input name="dep.name"/><input name="dep.uuid" type="hidden"/></td>
+  		
+  		</tr>
+  		<tr>
+  		<td>部门电话</td>
+  		<td><input name="dep.tele"/></td>
+  		
+  		</tr>
+  	</table>
+  	<button id="btnSave" type="button">保存</button>
+  </form>
+  </div>
+</body>
+</html>
