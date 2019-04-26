@@ -1,17 +1,43 @@
 package duoxiance;
 
-public class Ceshi {
-	static final int LINE_NUM = 1024;
-	static final int COLUM_NUM = 1024;
-	public static void main(String[] args) {
-		long [][] array = new long[LINE_NUM][COLUM_NUM];
-		long startTime = System.currentTimeMillis();
-		for(int i = 0;i<LINE_NUM;i++) {
-			for(int j = 0;j<COLUM_NUM;j++) {
-				array[j][i] = i*2+j;
+/**
+ * 设置锁
+ * @author baifeng
+ *
+ */
+public class Ceshi implements Runnable{
+	private static Object obj1 = new Object();
+	private static Object obj2 = new Object();
+	boolean flag ;
+	public Ceshi(boolean flag) {
+		this.flag = flag;
+	}
+	@Override
+	public void run() {
+		if(flag) {
+			synchronized (obj1) {
+				System.out.println(Thread.currentThread().getName()+"进入1锁");
+				synchronized (obj2) {
+					System.out.println(Thread.currentThread().getName()+"进入2锁");
+				}
+				
+			}
+		}else {
+			synchronized (obj2) {
+				System.out.println(Thread.currentThread().getName()+"进入2锁");
+				synchronized (obj1) {
+					System.out.println(Thread.currentThread().getName()+"进入1锁");
+				}
 			}
 		}
-		long end = System.currentTimeMillis();
-		System.out.println("cache time"+":"+(end-startTime)+"ms");
+		
 	}
+	public static void main(String[] args) {
+		Ceshi ceshi1 = new Ceshi(true);
+		Ceshi ceshi2 = new Ceshi(false);
+		new Thread(ceshi1).start();
+		new Thread(ceshi2).start();
+	
+	}
+
 }

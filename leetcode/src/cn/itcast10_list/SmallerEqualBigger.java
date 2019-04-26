@@ -103,6 +103,9 @@ public class SmallerEqualBigger {
 				cur = next;
 			}
 			// small and equal reconnect
+			/**
+			 * ÖØÒªÅ¶
+			 */
 			if (sT != null) {
 				sT.next = eH;
 				eT = eT == null ? sT : eT;

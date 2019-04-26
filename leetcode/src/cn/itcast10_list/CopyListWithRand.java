@@ -1,7 +1,11 @@
 package cn.itcast10_list;
 
 import java.util.HashMap;
-
+/**
+ * 实现随机节点的复制
+ * @author baifeng
+ *
+ */
 public class CopyListWithRand {
 	public static class Node{
 		public int value;

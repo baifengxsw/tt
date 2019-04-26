@@ -4,45 +4,53 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
+import cn.itcast10_list.ListNode;
+import cn.itcast10_list.IsPalindromeList.Node;
 /**
- * 顺时针旋转90°
+ * 实现链表的就地逆置
  * @author baifeng
  *
  */
 public class Ceshi {
-		public static void print(int[][]m) {
-			if(m==null||m.length==0||m[0].length==0)
-				return ;
-			int row1 =0;
-			int col1 =0;
-			int row2 = m.length-1;
-			int col2 = m[0].length-1;
-			while(row1<=row2&&col1<=col2) {
-				printProcess(m,row1++,col1++,row2--,col2--);
+		public static ListNode reverseList(ListNode head) {
+			if(head==null||head.next==null)
+				return head;
+			ListNode cur = head ;
+			ListNode right = head.next;
+			cur.next=null;
+			ListNode temp = null;
+			while(right!=null) {
+				temp = right.next;
+				right.next=cur;
+				cur =right;
+				right = temp;
 			}
+			return cur;
 		}
-		
-
-		//因为这个假设在方阵的情况下
-		private static void printProcess(int[][] m, int row1, int col1, int row2, int col2) {
-			for(int i=0;i<col2-col1;i++) {
-				int temp = m[row1][col1+i];
-				m[row1][col1+i] = m[row2-i][col1];
-				m[row2-i][col1]= m[row2][col2-i];
-				m[row2][col2-i] = m[row1+i][col2];
-				m[row1+i][col2] = temp;
+		public static void print(ListNode head) {
+			while(head !=null) {
+				System.out.print(head.val);
+				head = head.next;
 			}
-			
+			System.out.println();
 		}
-
-
-
 		public static void main(String[] args) {
-			int [][] matrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
-			print(matrix);
-			for(int i=0 ;i<matrix.length;i++) {
-				System.out.println(Arrays.toString(matrix[i]));
-			}
+			ListNode node1 = new ListNode(1);
+			ListNode node2 = new ListNode(2);
+			ListNode node3 = new ListNode(3);
+			ListNode node4 = new ListNode(4);
+			ListNode node5 = new ListNode(5);
+			node1.next = node2;
+			node2.next = node3;
+			node3.next  = node4;
+			node4.next = node5 ;
+			node5.next = null;
+			print(node1);
+			ListNode head  = reverseList(node1);
+			print(head);
 			
 		}
 }
