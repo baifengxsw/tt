@@ -4,13 +4,13 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-@Service("userService")//Ïàµ±ÓÚ<bean id ="userService" class="">
+@Service("userService")//ï¿½àµ±ï¿½ï¿½<bean id ="userService" class="">
 public class UserServiceImpl implements UserService {
 	@Resource(name="userDao")
 	private UserDao userDao;
 	@Override
 	public void save() {
-		System.out.println("userServiceImplÖÐµÄsave·½·¨±»µ÷ÓÃÁË");
+		System.out.println("userServiceImplï¿½Ðµï¿½saveï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		userDao.save();
 
 	}

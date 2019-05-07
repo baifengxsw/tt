@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用动态代理的模式
+	1;namespace 必须是接口的全路径名
+	2;接口的方法名 必须与sql  id 一致
+	3；接口的入参 必须与parametertype 一致
+	4接口的返回值必须与resultType一致
+ -->
+<mapper namespace="cn.itcast.mapper.UserMapper">
+
+	<sql id="user_sql">
+			 `id`,
+			  `username`,
+			  `birthday`,
+			  `sex`,
+			  `address` 
+	</sql>
+	<!-- 进行唯一表示 id   parametertype 入参  返回的类型 -->
+	<select id="getUserById" parameterType="int" resultType="user">
+			SELECT 
+			  `id`,
+			  `username`,
+			  `birthday`,
+			  `sex`,
+			  `address` 
+			FROM
+			  `user` 
+			WHERE id = #{id};
+			</select>
+	<!-- 模糊查询姓名  parametertype 入参  返回的类型 -->
+	<select id="getUserByName" parameterType="string" resultType="user">
+			SELECT 
+			<include refid="user_sql"></include>
+			FROM
+			  `user` 
+			<!-- WHERE username like #{ name}; -->
+			where username like '%${value}%'
+			</select>
+	<select id="getUserByNameSex" parameterType="user" resultType="user">
+			SELECT 
+			 <include refid="user_sql"></include>
+			FROM
+			  `user` 
+			<where>
+			<!-- WHERE username like #{ name}; -->
+			<if test="username !=null and username !=''">
+			  and username like '%${username}%' 
+			</if>
+			<if test="sex !=null and sex !=''">
+			 and sex = #{sex} 
+			</if>
+			</where>
+			</select>
+	<!-- 插入数据 parametertype 入参  返回的类型 -->
+	<insert id="insertUser" parameterType="user"> 
+		<selectKey keyProperty="uuid" resultType="string" order="BEFORE">
+			select uuid();
+		</selectKey>
+					INSERT INTO `user` (
+				  `username`,
+				  `birthday`,
+				  `sex`,
+				  `address`,
+				  `uuid`
+				) 
+				VALUES
+				  (
+				    #{username},
+				    #{birthday},
+				    #{sex},
+				    #{address},
+				    #{uuid}
+				  ) ;
+
+	</insert>
+	<!-- 更新 -->
+	<select id="getUserByQueryVo" parameterType="queryvo" resultType="user">
+			SELECT 
+			  `id`,
+			  `username`,
+			  `birthday`,
+			  `sex`,
+			  `address` 
+			FROM
+			  `user` 
+			WHERE id = #{user.id};
+			</select>
+	
+	<select id="getUserCount" resultType="int">
+		select count(1) from user;
+	</select>
+	<resultMap type="user" id="user_order_map">
+		<id property="id" column="id"></id>
+			<result property="username" column="username"/>
+			<result property="address" column="address"/>
+			<result property="birthday" column="birthday"/>
+			<result property="sex" column="sex"/>
+			<!-- 对应的数据类型 -->
+			 <collection property="orders" ofType="order">
+			 	<!-- id用于映射主键 -->
+		<id property="id" column="oid"/>
+		<!-- 普通字段用result映射 -->
+		<result property="userId" column="id"/>
+		<result property="number" column="number"/>
+		<result property="createtime" column="createtime"/>
+		<result property="note" column="note"/>
+			 </collection>
+			
+	</resultMap>
+	<!-- 使用map 对于一对多的查询 -->
+	<select id="getUserByMap" resultMap="user_order_map">
+								select 
+				  u.`uuid`,
+				  u.`id`,
+				  u.`username`,
+				  u.`birthday`,
+				  u.`sex`,
+				  u.`address` ,
+				  o.`id` oid,
+				  o.`user_id`,
+				  o.`createtime`,
+				  o.`number`,
+				  o.`note`
+				from
+				  `order` o,`user` u 
+				where o.user_id = u.id;
+	</select>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用动态代理的模式
+	1;namespace 必须是接口的全路径名
+	2;接口的方法名 必须与sql  id 一致
+	3；接口的入参 必须与parametertype 一致
+	4接口的返回值必须与resultType一致
+ -->
+<mapper namespace="cn.itcast.mapper.OrderMapper">
+	<resultMap type="order" id="order_list_map">
+		<!-- id用于映射主键 -->
+		<id property="id" column="id"/>
+		<!-- 普通字段用result映射 -->
+		<result property="userId" column="user_id"/>
+		<result property="number" column="number"/>
+		<result property="createtime" column="createtime"/>
+		<result property="note" column="note"/>
+		
+	
+	</resultMap>
+	<select id="getOrderList" resultType="order">
+					SELECT 
+			  `id`,
+			  `user_id` ,
+			  `number`,
+			  `createtime`,
+			  `note` 
+			FROM
+			  `order` 
+	</select>
+	<resultMap type="order" id="order_user_map">
+		<!-- id用于映射主键 -->
+		<id property="id" column="id"/>
+		<!-- 普通字段用result映射 -->
+		<result property="userId" column="user_id"/>
+		<result property="number" column="number"/>
+		<result property="createtime" column="createtime"/>
+		<result property="note" column="note"/>
+		<association property="user" javaType="user">
+			<id property="id" column="user_id"></id>
+			<result property="username" column="username"/>
+			<result property="address" column="address"/>
+			<result property="birthday" column="birthday"/>
+			<result property="sex" column="sex"/>
+		</association>
+	</resultMap>
+	<select id="getOrderUserList" resultMap="order_user_map">
+					SELECT 
+			  o.`id`,
+			  o.`user_id` ,
+			  o.`number`,
+			  o.`createtime`,
+			  o.`note`,
+			  u.username,
+			  u.address ,
+			  u.sex,
+			  u.birthday
+			FROM
+			  `order` o,`user` u WHERE u.id=o.user_id;
+	</select>
+	<select id="getOrderListMap" resultMap="order_list_map">
+					SELECT 
+			  `id`,
+			  `user_id` ,
+			  `number`,
+			  `createtime`,
+			  `note` 
+			FROM
+			  `order` 
+	</select>
+	
+	
+</mapper>

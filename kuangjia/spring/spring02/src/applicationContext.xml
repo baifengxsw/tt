@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> 
 	<!-- 配置被增强的对象 -->
-	<bean id="productDao" class="cn.itcast01.demo4.ProductDaoImpl">
+	<bean id="productDao" class="cn.itcast01.demo4.ProductDaoImpl"> 
 	</bean>
 	<bean id="myAspect" class="cn.itcast01.demo4.MyAspectXML"></bean>
 	<!-- 通过AOP的配置 完成相应的代理 -->

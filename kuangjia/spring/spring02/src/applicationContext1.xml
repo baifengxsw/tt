@@ -7,11 +7,17 @@
 
 <!-- springIOC的注解 -->
 <!-- 使用不需要扫描类就可以使用一些属性注入方面的注解-->
+<!-- 自动扫描该包，使 SpringMVC 为包下用了@controller注解的类是控制器 -->
+	<context:component-scan base-package="cn.itcast01.demo1" />
+	
+
+
+
 	<context:annotation-config></context:annotation-config>
-	<bean id="userDao" class="cn.itcast01.demo3.UserDao"></bean>
+<!-- 	<bean id="userDao" class="cn.itcast01.demo3.UserDao"></bean>
 	<bean id="orderDao" class="cn.itcast01.demo3.OrderDao"></bean>
 	<bean id="userService" class="cn.itcast01.demo3.UserService">
 	
-	</bean>
+	</bean> -->
 
 </beans>

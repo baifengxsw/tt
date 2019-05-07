@@ -16,13 +16,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Avro" target="1.8" />
+      <module name="Avro" target="1.7" />
       <module name="hbase" target="1.6" />
-      <module name="hdfs" target="1.8" />
-      <module name="hivedemo" target="1.8" />
-      <module name="JDBC" target="1.8" />
-      <module name="ProtobufDemo" target="1.8" />
-      <module name="ZooKeeper" target="1.8" />
+      <module name="hdfs" target="1.7" />
+      <module name="hivedemo" target="1.7" />
+      <module name="JDBC" target="1.7" />
+      <module name="ProtobufDemo" target="1.7" />
+      <module name="ZooKeeper" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

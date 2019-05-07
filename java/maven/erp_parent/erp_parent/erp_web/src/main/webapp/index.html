@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>管理系统</title>
@@ -9,9 +9,6 @@
     <script type="text/javascript" src="adminjs/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="adminjs/jquery.easyui.1.2.6.min.js"></script>
 	<script type="text/javascript" src='adminjs/index.js'> </script>
-	
-
-
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  fit="true"   scroll="no">
 <noscript>
@@ -54,28 +51,26 @@
     
     <!--修改密码窗口-->
     <!--修改密码窗口-->
-	<!--修改密码窗口-->
-<div id="w" class="easyui-dialog">
-    <div class="easyui-layout" fit="true">
-        <div region="center" border="false" ; background: #fff;" align="center">
-            <table cellpadding=3>
-                <tr>
-                    <td>旧密码：</td>
-                    <td><input id="txtOldPass" type="password" class="txt01" /></td>
-                </tr>
-                <tr>
-                    <td>新密码：</td>
-                    <td><input id="txtNewPass" type="password" class="txt01" /></td>
-                </tr>
-                <tr>
-                    <td>确认密码：</td>
-                    <td><input id="txtRePass" type="password" class="txt01" /></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-
+	<div id="w" class="easyui-dialog">
+	    <div class="easyui-layout" fit="true">
+	        <div region="center" border="false" style="padding: 10px; background: #fff;">
+	            <table cellpadding=3>
+	                <tr>
+	                    <td>旧密码：</td>
+	                    <td><input id="txtOldPass" type="password" class="txt01" /></td>
+	                </tr>
+	                <tr>
+	                    <td>新密码：</td>
+	                    <td><input id="txtNewPass" type="password" class="txt01" /></td>
+	                </tr>
+	                <tr>
+	                    <td>确认密码：</td>
+	                    <td><input id="txtRePass" type="password" class="txt01" /></td>
+	                </tr>
+	            </table>
+	        </div>
+	    </div>
+	</div>
 
 	<div id="mm" class="easyui-menu" style="width:150px;">
 		<div id="tabupdate">刷新</div>

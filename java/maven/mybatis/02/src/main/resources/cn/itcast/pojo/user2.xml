@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用动态代理的模式
+	1;namespace 必须是接口的全路径名
+	2;接口的方法名 必须与sql  id 一致
+	3；接口的入参 必须与parametertype 一致
+	4接口的返回值必须与resultType一致
+ -->
+<mapper namespace="cn.itcast.mapper.UserMapper">
+	<!-- 进行唯一表示 id   parametertype 入参  返回的类型 -->
+	<select id="getUserById" parameterType="int" resultType="user">
+			SELECT 
+			  `id`,
+			  `username`,
+			  `birthday`,
+			  `sex`,
+			  `address` 
+			FROM
+			  `user` 
+			WHERE id = #{id};
+			</select>
+	<!-- 模糊查询姓名  parametertype 入参  返回的类型 -->
+	<select id="getUserByName" parameterType="string" resultType="user">
+			SELECT 
+			  `id`,
+			  `username`,
+			  `birthday`,
+			  `sex`,
+			  `address` 
+			FROM
+			  `user` 
+			<!-- WHERE username like #{ name}; -->
+			where username like '%${value}%'
+			</select>
+	<!-- 插入数据 parametertype 入参  返回的类型 -->
+	<insert id="insertUser" parameterType="user"> 
+		<selectKey keyProperty="uuid" resultType="string" order="BEFORE">
+			select uuid();
+		</selectKey>
+					INSERT INTO `user` (
+				  `username`,
+				  `birthday`,
+				  `sex`,
+				  `address`,
+				  `uuid`
+				) 
+				VALUES
+				  (
+				    #{username},
+				    #{birthday},
+				    #{sex},
+				    #{address},
+				    #{uuid}
+				  ) ;
+
+	</insert>
+	<!-- 更新 -->
+	
+	
+	
+</mapper>

@@ -1,7 +1,7 @@
 $(function(){
 	//加载表格数据
 	$('#grid').datagrid({
-		
+		queryParams:{},
 		columns:[[
 		    {field:'name',title:'月份',width:100},
 		    {field:'y',title:'销售额',width:100}
@@ -19,14 +19,11 @@ $(function(){
 	$('#btnSearch').bind('click',function(){
 		//把表单数据转换成json对象
 		var formdata = $('#searchForm').serializeJSON();
-		$('#grid').datagrid(
-				{
-					url:'report_trendReport',
-					queryParams:formdata,
-				}
-				
-		);
 		$('#grid').datagrid('load',formdata);
+		$('#grid').datagrid({
+			url:'report_trendReport',
+			queryParams:formdata
+		});
 	});
 	
 	
@@ -43,7 +40,7 @@ function showChart(){
             x: -20 //center
         },
         subtitle: {
-            text: '',
+            text: 'Source: www.itcast.com',
             x: -20
         },
         xAxis: {

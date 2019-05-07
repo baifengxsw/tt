@@ -4,26 +4,26 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void save() {
-		System.out.println("±£´æ");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		
 	}
 
 	@Override
 	public void update() {
-		System.out.println("¸üÐÂ");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		
 	}
 
 	@Override
 	public void find() {
-		System.out.println("²éÕÒ");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		
 	}
 
 	@Override
-	public void delete() {
-		System.out.println("É¾³ý");
-		
+	public int  delete() {
+		System.out.println("åˆ é™¤");
+		return 1;
 	}
 
 }

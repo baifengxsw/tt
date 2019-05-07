@@ -4,31 +4,31 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
- * ÇÐÃæÀà
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author baifeng
  *
  */
 public class MyAspectXML {
 	public void checkPri(JoinPoint join) {
-		System.out.println("È¨ÏÞÐ£Ñé"+join);
+		System.out.println("È¨ï¿½ï¿½Ð£ï¿½ï¿½"+join);
 	}
 	
 	/**
-	 * ºóÖÃÍ¨Öª
+	 * ï¿½ï¿½ï¿½ï¿½Í¨Öª
 	 */
 	
 	public void writeLogs(Object result) {
-		System.out.println("Ð´ÈëÈÕÖ¾"+result);
+		System.out.println("dsfdsf"+result);
 	}
 	
 	/**
-	 * »·ÈÆ ÐÔÄÜ¼à¿Ø
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¼ï¿½ï¿½
 	 * @throws Throwable 
 	 */
 	public Object around(ProceedingJoinPoint join) throws Throwable {
-		System.out.println("»·ÈÆÇ°µÄÍ¨Öª");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Í¨Öª");
 		Object obj = join.proceed();
-		System.out.println("»·ÈÆºó½øÐÐÍ¨Öª");
+		System.out.println("ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½ï¿½Í¨Öª");
 		return obj;
 		
 	}

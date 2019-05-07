@@ -5,28 +5,28 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * ×¢½âÏàÓ¦µÄ²âÊÔÀà
+ * ×¢ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author baifeng
  *
  */
 public class Demo1 {
 	@Test
-	//²âÊÔ1 ´«Í³·½Ê½
+	//ï¿½ï¿½ï¿½ï¿½1 ï¿½ï¿½Í³ï¿½ï¿½Ê½
 	public void demo1() {
 		UserDao dao = new UserDaoImpl();
 		dao.save();
 	}
 	@Test
-	//spring ioc ×¢½âµÄ·½Ê½
+	//spring ioc ×¢ï¿½ï¿½Ä·ï¿½Ê½
 	public void demo2() {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext1.xml");
 		UserDao dao = (UserDao) applicationContext.getBean("userDao");
 		dao.save();
 	}
 	@Test
-	//spring ioc ×¢½âµÄ·½Ê½
+	//spring ioc ×¢ï¿½ï¿½Ä·ï¿½Ê½
 	public void demo3() {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext1.xml");
 		UserService service = (UserService) applicationContext.getBean("userService");
 		service.save();
 	}

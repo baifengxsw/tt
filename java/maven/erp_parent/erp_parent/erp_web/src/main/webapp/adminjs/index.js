@@ -3,58 +3,77 @@ window.onload = function(){
 	$('#loading-mask').fadeOut();
 }
 var onlyOpenTitle="欢迎使用";//不允许关闭的标签的标题
-var _menus;
 
+var _menus={
+		"icon":"icon-sys",
+		"menuid":"0",
+		"menuname":"系统菜单",
+		"menus":
+			[
+			 	{
+			 		"icon":"icon-sys","menuid":"100","menuname":"基础数据","menus":
+					[
+						{"icon":"icon-sys","menuid":"101","menuname":"商品类型管理","url":"goodstype.html"}	,
+						{"icon":"icon-sys","menuid":"102","menuname":"商品管理","url":"goods.html"}						
+					]
+			 	}
+			 ]
+		};
 
 
 
 
 $(function(){	
 	
-	//显示登录用户名
+	//显示登陆用户名
 	showName();
-	//在这里为相应的menu 进行赋值
+	//获取菜单数据
 	$.ajax({
-		url:'menu_getMenuTree',
-		type:'post',
-		dataType:'json',
-		success:function(rtn){
+		url: 'menu_getMenuTree',
+		type: 'post',
+		dataType: 'json',
+		success: function(rtn){
+			//给菜单赋值
 			_menus=rtn;
 			InitLeftMenu();
 		}
-	})
-	//因为这里是异步的 ajax 还没有返回的时候 就直接初始化左边的窗口
+	});
 	tabClose();
 	tabCloseEven();
-	
-	//为安全登出绑定一个事件
-	$('#loginOut').click(function(){
+	//安全退出 
+	$('#loginOut').bind('click',function(){
 		$.ajax({
-			url:'login_loginOut',
-			success:function(){
-				location.href='login.html';
+			url: 'login_loginOut',
+			success: function(){
+				location.href="login.html";
 			}
-		})
-	})
+		});
+	});
+	
 })
 
+/**
+ * 显示登陆用户名
+ */
 function showName(){
-	//这里是异步的请求 
 	$.ajax({
-		url:'login_showName',
-		dataType:'json',
-		type:'post',
+		url: 'login_showName',
+		dataType: 'json',
+		type: 'post',
 		success:function(rtn){
+			//判断是否存在登陆用户
+			//访问json的key值方式有两种.
+			//对象.
+			//对象[key]
+			//JSON 对象 {"success":true,"message":'超级管理员'}
 			if(rtn.success){
-				$('#username').html(rtn.message);
+				$('#username').html(rtn['message']);
 			}else{
-				//如果当前用户不存在 ,应该直接禁止进入
-				location.href='login.html';
+				location.href="login.html";
 			}
 		}
-	})
+	});
 }
-
 
 
 //初始化左侧
@@ -315,54 +334,55 @@ function openPwd() {
     $('#w').dialog({
         title: '修改密码',
         width: 300,
+        height: 180,
         modal: true,
-        shadow: true,
         closed: true,
-        height: 190,
-        resizable:false,
         buttons:[{
 			text:'保存',
+			iconCls: 'icon-save',
 			handler:function(){
-				//相应的提交保存的方法
+				//提交保存
+				
 				var oldPwd = $('#txtOldPass').val();
 				var newPwd = $('#txtNewPass').val();
 				var rePwd = $('#txtRePass').val();
-				if(oldPwd ==''){
+				
+				if(oldPwd == ''){
 					$.messager.alert('提示','原密码不能为空','info');
-					return ;
+					return;
 				}
-				if(newPwd ==''){
+				
+				if(newPwd == ''){
 					$.messager.alert('提示','新密码不能为空','info');
-					return ;
+					return;
 				}
-				if(newPwd!=rePwd){
-					$.messager.alert('提示','两次输入密码不一致','info');
-					return ;
+				
+				if(rePwd != newPwd){
+					$.messager.alert('提示','确认密码不一致','info');
+					return;
 				}
+				
 				$.ajax({
-					url:'emp_updatePwd',
-					data:{'oldPwd':oldPwd,'newPwd':newPwd},
-					type:'post',
-					dataType:'json',
+					url: 'emp_updatePwd',
+					data: {"oldPwd": oldPwd, "newPwd":newPwd},
+					dataType: 'json',
+					type: 'post',
 					success:function(rtn){
-						$.messager.alert('提示',rtn.message,'info',function(){
-							//拿到服务端返回的信息 进行回调
+						$.messager.alert('提示',rtn.message, 'info',function(){
 							if(rtn.success){
-								//更新成功,关掉当前窗口
 								$('#w').dialog('close');
-								//清空当前窗口
-								$('txtOldPass').val('');
-								$('#txtNewPass').val('');
+								//清空内容
+								 $('#txtOldPass').val('');
+								 $('#txtNewPass').val('');
 								 $('#txtRePass').val('');
-					
 							}
 						});
 					}
-					
-				})
+				});
 			}
 		},{
 			text:'关闭',
+			iconCls: 'icon-cancel',
 			handler:function(){
 				
 			}

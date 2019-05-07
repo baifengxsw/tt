@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		">  
+		<!-- 定义一个任务类 -->
+		<bean id="job" class="cn.itcast.demo.JobTest">
+		
+		</bean>
+		<!-- 任务类的描述 -->
+		<bean id = "jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+			<!-- 相应的类和方法 -->
+			<property name="targetObject" ref="job"></property>
+			<property name="targetMethod" value="doJob"></property>
+			
+		</bean>
+		<!-- 触发器 -->
+		<bean id="mailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+			<property name="jobDetail" ref="jobDetail"></property>
+			<!-- 触发时间 cron表达式 ，七个表达式 ，7个域 -->
+			<property name="cronExpression" value="0/10 * * * * ?"></property>
+		</bean>
+		<!-- 任务调度管理器 -->
+		<bean id ="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<list>
+					<ref bean="mailTrigger"></ref>
+				</list>
+			</property>
+		</bean>
+	</beans>

@@ -2,11 +2,12 @@ package cn.itcast01.demo1;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component("userDao")//Ïàµ±ÓÚÔÚxmlÖĞÅäÖÃÁË<bean id ="userDao" class="µ±Ç°Àà">
+@Repository("userDao")//ï¿½àµ±ï¿½ï¿½ï¿½ï¿½xmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<bean id ="userDao" class="ï¿½ï¿½Ç°ï¿½ï¿½">
 public class UserDaoImpl implements UserDao {
 	private String name;
-	@Value("ÑîÓÀĞÅ")
+	@Value("ç‹")
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -14,7 +15,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void save() {
 		
-		System.out.println("daoÖĞ±£´æÓÃ»§µÄ·½·¨Ö´ĞĞÁË"+name);
+		System.out.println("dao"+name);
 	}
 
 }
