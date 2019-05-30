@@ -25,6 +25,7 @@ public class Test01 {
         IOUtils.copyBytes(fis, baos, 1024);//只要是输入输出流都可以使用
         fis.close();
         System.out.println(new String(baos.toByteArray()));
+
     }
 
     /**

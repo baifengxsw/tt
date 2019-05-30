@@ -1,0 +1,26 @@
+products:
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$1.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$2.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$3$$anonfun$apply$1.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$3.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$4.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$5.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$$anonfun$main$1.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala$.class
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\tt\hadoop_intel\spark2\spark1\target\classes\cn\itcast\demo1\WordCountScala.class
+binary dependencies:
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> C:\Users\baifeng\.m2\repository\org\apache\spark\spark-core_2.11\2.1.0\spark-core_2.11-2.1.0.jar
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> C:\Users\baifeng\.m2\repository\org\scala-lang\scala-library\2.11.8\scala-library-2.11.8.jar
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> D:\java\jdk1.8.0_151\jre\lib\rt.jar
+source dependencies:
+external dependencies:
+class names:
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$1
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$2
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$3
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$3$$anonfun$apply$1
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$4
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$5
+   D:\tt\hadoop_intel\spark2\spark1\src\main\java\cn\itcast\demo1\WordCountScala.scala -> cn.itcast.demo1.WordCountScala$$anonfun$main$1

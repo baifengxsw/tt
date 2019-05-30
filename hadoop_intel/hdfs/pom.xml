@@ -36,6 +36,11 @@
             <artifactId>hadoop-mapreduce-client-core</artifactId>
             <version>2.7.7</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-server</artifactId>
+            <version>1.2.4</version>
+        </dependency>
     </dependencies>
 
 </project>

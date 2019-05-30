@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.ordering.antlr.OrderByFragmentRenderer;
 import org.junit.Test;
@@ -89,8 +91,9 @@ public class Demo2 {
 		Session session = HibernateUtils.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		Criteria criteria = session.createCriteria(Customer.class);
-		
-		
+		criteria.setProjection(Projections.rowCount());
+		long count = (long) criteria.uniqueResult();
+		System.out.println(count);
 		tx.commit();
 		//²»ÐèÒªclose
 	}

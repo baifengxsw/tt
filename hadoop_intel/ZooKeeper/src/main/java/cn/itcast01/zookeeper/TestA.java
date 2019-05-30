@@ -45,6 +45,7 @@ public class TestA {
     public  void setData() throws Exception{
         ZooKeeper zk = new ZooKeeper("192.168.164.132:2181",5000,null);
         zk.setData("/a/b/c0000000001","xia".getBytes(),0);
+
     }
 
     /**
@@ -55,6 +56,7 @@ public class TestA {
     @Test
     public  void createEmphoral() throws Exception{
         ZooKeeper zk = new ZooKeeper("192.168.164.132:2181",5000,null);
+        // 管理
         zk.create("/a/b/f","ddd".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
     }
 

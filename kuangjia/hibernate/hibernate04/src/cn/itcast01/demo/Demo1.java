@@ -28,10 +28,10 @@ public class Demo1 {
 		Transaction tx = session.beginTransaction();
 		//创建一个用户
 		Customer customer = new Customer();
-		customer.setCust_name("wu");
+		customer.setCust_name("吕布");
 		for(int i =0;i<10;i++) {
 			LinkMan linkMan = new LinkMan();
-			linkMan.setLkm_name("middle"+i);
+			linkMan.setLkm_name("ghfsf"+i);
 			customer.getLinkMans().add(linkMan);
 			linkMan.setCustomer(customer);
 			session.save(linkMan);

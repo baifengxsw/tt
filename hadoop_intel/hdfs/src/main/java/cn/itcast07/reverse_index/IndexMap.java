@@ -21,14 +21,38 @@ public class IndexMap extends Mapper<Object,Text,Text,Text> {
        //获取FileSplit对象
         split =(FileSplit )context.getInputSplit();
         //将文本中值按空格进行分割
-        StringTokenizer itr  = new StringTokenizer(value.toString());
-        while(itr.hasMoreTokens()){
+        String [] arr = getSplits(value.toString());
+        if(arr == null )
+            return ;
+        for(String str:arr){
             //我这边直接加的是完整的路径 考虑到实际需要
-            keyInfo.set(itr.nextToken()+";"+split.getPath().toString());
-            System.out.println(split.getPath());
-            System.out.println(split.getPath().getName());
+            keyInfo.set(str+"%"+split.getPath().toString());
+            System.out.println(str+"%"+split.getPath().toString());
             valueInfo.set("1");
             context.write(keyInfo,valueInfo);
+        }
+    }
+    public static String[] getSplits(String str) {
+        if(str==null || str.length()==0)
+            return null;
+        String [] arr = str.trim().split("\\s+");
+
+        if(arr.length ==2) {
+            return new String [] {arr[0] +" "+arr[1]};
+        }else if(arr.length >2) {
+            String [] ret = new String [2*(arr.length-2)+1];
+            int index = 0;
+            for(int i = 0;i<arr.length-1;i++) {
+                for(int j = 1;j<3;j++) {
+                    ret[index++] = arr[i]+" "+arr[i+j];
+                    if(i == arr.length-2)
+                        break;
+                }
+            }
+            return ret;
+        }else {
+
+            return null;
         }
     }
 }

@@ -6,10 +6,16 @@
       <module fileurl="file://$PROJECT_DIR$/JDBC/JDBC.iml" filepath="$PROJECT_DIR$/JDBC/JDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProtobufDemo/ProtobufDemo.iml" filepath="$PROJECT_DIR$/ProtobufDemo/ProtobufDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZooKeeper/ZooKeeper.iml" filepath="$PROJECT_DIR$/ZooKeeper/ZooKeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flume/flume.iml" filepath="$PROJECT_DIR$/flume/flume.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop_intel.iml" filepath="$PROJECT_DIR$/hadoop_intel.iml" />
       <module fileurl="file://$PROJECT_DIR$/hbase/hbase.iml" filepath="$PROJECT_DIR$/hbase/hbase.iml" />
       <module fileurl="file://$PROJECT_DIR$/hdfs/hdfs.iml" filepath="$PROJECT_DIR$/hdfs/hdfs.iml" />
       <module fileurl="file://$PROJECT_DIR$/hivedemo/hivedemo.iml" filepath="$PROJECT_DIR$/hivedemo/hivedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kafka/kafka.iml" filepath="$PROJECT_DIR$/kafka/kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python/python.iml" filepath="$PROJECT_DIR$/python/python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scala/scala.iml" filepath="$PROJECT_DIR$/scala/scala.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark/spark.iml" filepath="$PROJECT_DIR$/spark/spark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark1/spark1.iml" filepath="$PROJECT_DIR$/spark1/spark1.iml" />
     </modules>
   </component>
 </project>

@@ -5,7 +5,7 @@
 <hibernate-mapping>
 <!-- 根标签 -->
 <!-- 建立 类和表的映射 -->
-	<class name="cn.itcast01.demo.Customer" table="cst_customer" lazy="true">
+	<class name="cn.itcast01.demo.Customer" table="cst_customer" >
 	<!--建立类中的属性和表中的主键进行对应  -->
 	<id name="cust_id" column="cust_id">
 		<generator class ="native"/>
@@ -20,7 +20,7 @@
 	<property name="cust_mobile" column="cust_mobile"/>
 	<!-- 配置一对多的映射 ，放置多的一方的数据 -->
 	<!-- inverse 是否放弃外键的维护权 -->
-	<set name="linkMans" batch-size="4">
+	<set name="linkMans" inverse="true" batch-size="4" fetch ="join" lazy="true">
 		<!-- 多的一方的外键 -->
 		<key column="lkm_cust_id"/>
 		<one-to-many class="cn.itcast01.demo.LinkMan" />

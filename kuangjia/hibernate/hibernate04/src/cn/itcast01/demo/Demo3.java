@@ -19,11 +19,12 @@ public class Demo3 {
 		Session session = HibernateUtils.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		//进行内连接查询  //linkMans 是customer 内中对LinkMan 的集合
-		/*Query query = session.createQuery("from Customer c inner join c.linkMans");
-		List<Object[]> list = query.list();
-		for(Object[] obj:list) {
-			System.out.println(Arrays.toString(obj));
-		}*/
+		/*Query query   = session.createQuery("from Customer c inner join c.linkMans");
+		List<Customer> list = query.list();
+		for(Customer obj:list) {
+			System.out.println(obj);
+		}
+		*/
 		//接下来演示迫切内连接
 		Query query = session.createQuery("select distinct c from Customer c inner join fetch c.linkMans");
 		List<Customer> list = query.list();

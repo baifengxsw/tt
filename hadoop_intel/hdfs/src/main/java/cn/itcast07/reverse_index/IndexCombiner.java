@@ -19,9 +19,11 @@ public class IndexCombiner extends Reducer<Text,Text,Text,Text> {
         for(Text value :values){
             count++;
         }
-        String[] keyArr = key.toString().split(";");
-        keyInfo.set(keyArr[0]);
+        String[] keyArr = key.toString().split("%");
+        keyInfo.set(keyArr[0].trim());
+
         valueInfor.set(keyArr[1]+";"+count);
+        System.out.println("combine:"+keyArr[0]+"------"+keyArr[1]);
         context.write(keyInfo,valueInfor);
 
     }

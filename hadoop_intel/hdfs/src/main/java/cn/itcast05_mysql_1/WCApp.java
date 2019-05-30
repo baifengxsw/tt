@@ -27,7 +27,7 @@ public class WCApp {
         DBConfiguration.configureDB(job.getConfiguration(),driverclass,URL,USER,PASS);
         //使用相应的设置初始化map部分
         //设置数据输入的内容
-        DBInputFormat.setInput(job,MyDBWritable.class,"select id,name,txt from words","select count(*) from words");
+        DBInputFormat.setInput(job,MyDBWritable.class,"select * from words","select count(*) from words");
         //添加文件路径 可多条
 
         //设置输出路径

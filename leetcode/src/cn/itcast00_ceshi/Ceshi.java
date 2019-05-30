@@ -15,42 +15,35 @@ import cn.itcast10_list.IsPalindromeList.Node;
  *
  */
 public class Ceshi {
-		public static ListNode reverseList(ListNode head) {
-			if(head==null||head.next==null)
-				return head;
-			ListNode cur = head ;
-			ListNode right = head.next;
-			cur.next=null;
-			ListNode temp = null;
-			while(right!=null) {
-				temp = right.next;
-				right.next=cur;
-				cur =right;
-				right = temp;
-			}
-			return cur;
-		}
-		public static void print(ListNode head) {
-			while(head !=null) {
-				System.out.print(head.val);
-				head = head.next;
-			}
-			System.out.println();
-		}
-		public static void main(String[] args) {
-			ListNode node1 = new ListNode(1);
-			ListNode node2 = new ListNode(2);
-			ListNode node3 = new ListNode(3);
-			ListNode node4 = new ListNode(4);
-			ListNode node5 = new ListNode(5);
-			node1.next = node2;
-			node2.next = node3;
-			node3.next  = node4;
-			node4.next = node5 ;
-			node5.next = null;
-			print(node1);
-			ListNode head  = reverseList(node1);
-			print(head);
+		public static String[] getSplits(String str) {
+			if(str==null || str.length()==0)
+				return null;
+			String [] arr = str.split("\\s+");
 			
+			if(arr.length ==2) {
+				return new String [] {arr[0] +" "+arr[1]};
+			}else if(arr.length >2) {
+				String [] ret = new String [2*(arr.length-2)+1];
+				int index = 0;
+				for(int i = 0;i<arr.length-1;i++) {
+					for(int j = 1;j<3;j++) {
+						ret[index++] = arr[i]+" "+arr[i+j];
+						if(i == arr.length-2)
+							break;
+					}
+				}
+				return ret;
+			}else {
+			
+			return null;
+			}
+		}
+	
+		public static void main(String[] args) {
+			String str = "hello world1 world2";
+			String [] strs = getSplits(str);
+			for(String str1:strs) {
+				System.out.println(str1);
+			}
 		}
 }

@@ -38,7 +38,7 @@ def classify(inx,dataSet,labels,k):
 #进行数值的归一化操作
 def autoNorm(dataSet):
     minvals = dataSet.min(0)#得到每一列的最小值
-    maxvals = dataSet.max(0)
+    maxvals = dataSet.max(0)#得到每一列的最大值
     ranges = maxvals - minvals
     returnMat = zeros(shape(dataSet))
     dataSetLen = dataSet.shape[0]

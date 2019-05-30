@@ -7,21 +7,29 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Avro" />
+        <module name="flume" />
         <module name="hbase" />
         <module name="hdfs" />
         <module name="hivedemo" />
         <module name="JDBC" />
+        <module name="kafka" />
         <module name="ProtobufDemo" />
+        <module name="spark" />
+        <module name="spark1" />
         <module name="ZooKeeper" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Avro" target="1.7" />
+      <module name="flume" target="1.7" />
       <module name="hbase" target="1.6" />
       <module name="hdfs" target="1.7" />
       <module name="hivedemo" target="1.7" />
       <module name="JDBC" target="1.7" />
+      <module name="kafka" target="1.7" />
       <module name="ProtobufDemo" target="1.7" />
+      <module name="spark" target="1.7" />
+      <module name="spark1" target="1.7" />
       <module name="ZooKeeper" target="1.7" />
     </bytecodeTargetLevel>
   </component>

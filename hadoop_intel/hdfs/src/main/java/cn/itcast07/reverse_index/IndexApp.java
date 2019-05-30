@@ -1,5 +1,6 @@
 package cn.itcast07.reverse_index;
 
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -15,11 +16,11 @@ public class IndexApp {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
-            if(args.length!=2)
+            /*if(args.length!=2)
             {
                 System.out.println("Usage:wordCount<in><out>");
                 System.exit(1);
-            }
+            }*/
             Job job = Job.getInstance();
             job.setJarByClass(IndexApp.class);
 
@@ -30,15 +31,17 @@ public class IndexApp {
             job.setMapOutputValueClass(Text.class);
 
             job.setCombinerClass(IndexCombiner.class);
+
             job.setReducerClass(IndexReducer.class);
 
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(Text.class);
-            job.setNumReduceTasks(3);  //设置reduce的个数
+            //job.setSortComparatorClass(TextComparator.class);
+            job.setNumReduceTasks(1);  //设置reduce的个数
             //我把那两个文件上传到这个index目录下了
-            FileInputFormat.addInputPath(job, new Path(args[0]));
+            FileInputFormat.addInputPath(job, new Path("e:/WeGame"));
             //把结果输出到out_index+时间戳的目录下
-            FileOutputFormat.setOutputPath(job, new Path(args[1]));
+            FileOutputFormat.setOutputPath(job, new Path("e:/WeGame/out"));
 
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (IllegalStateException e) {

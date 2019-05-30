@@ -12,6 +12,7 @@ import java.io.IOException;
 public class WCMapper extends Mapper<LongWritable,MyDBWritable,Text,IntWritable>{
     @Override
     protected void map(LongWritable key, MyDBWritable value, Context context) throws IOException, InterruptedException {
+        System.out.println(value.getTxt());
         String [] arr = value.getTxt().split(" ");
         for(String s:arr){
             context.write(new Text(s),new IntWritable(1));

@@ -45,7 +45,7 @@ public class TestCRUD {
         TableName tName = TableName.valueOf("nn1:t1");
         Table table = conn.getTable(tName);
         //通过bytes工具类创建字节数组(将字符串)
-        byte[] rowid = Bytes.toBytes("row3");
+        byte[] rowid = Bytes.toBytes("row9999");
         System.out.println(table.getName());
         //在进行put的时候必须要指定rowid
 

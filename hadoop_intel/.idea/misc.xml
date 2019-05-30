@@ -10,6 +10,10 @@
         <option value="$PROJECT_DIR$/Avro/pom.xml" />
         <option value="$PROJECT_DIR$/ZooKeeper/pom.xml" />
         <option value="$PROJECT_DIR$/hbase/pom.xml" />
+        <option value="$PROJECT_DIR$/spark/pom.xml" />
+        <option value="$PROJECT_DIR$/spark1/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/pom.xml" />
+        <option value="$PROJECT_DIR$/flume/pom.xml" />
       </list>
     </option>
   </component>
