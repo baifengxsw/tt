@@ -7,9 +7,9 @@ import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.producer.Producer;
+
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
-
 import org.junit.Test;
 
 import java.util.HashMap;

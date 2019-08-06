@@ -1,0 +1,11 @@
+2019-06-23 16:27:33,392 WARNI [root:12] warniing
+2019-06-23 16:27:33,392 ERROR [root:13] error
+2019-06-23 16:27:33,392 CRITI [root:14] critical
+2019-06-23 16:28:35,155 WARNI [root:12] warniing
+2019-06-23 16:28:35,155 ERROR [root:13] error
+2019-06-23 16:28:35,155 CRITI [root:14] critical
+2019-06-23 16:30:51,511 DEBUG [root:9] debuf
+2019-06-23 16:30:51,511 INFO  [root:10] info 
+2019-06-23 16:30:51,511 WARNI [root:12] warniing
+2019-06-23 16:30:51,511 ERROR [root:13] error
+2019-06-23 16:30:51,511 CRITI [root:14] critical

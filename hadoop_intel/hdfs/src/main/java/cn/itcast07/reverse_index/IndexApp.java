@@ -7,6 +7,7 @@ import org.apache.hadoop.io.Text;
 
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class IndexApp {
             }*/
             Job job = Job.getInstance();
             job.setJarByClass(IndexApp.class);
-
+            job.setInputFormatClass(TextInputFormat.class);
             //实现map函数，根据输入的<key,value>对生成中间结果。
             job.setMapperClass(IndexMap.class);
 

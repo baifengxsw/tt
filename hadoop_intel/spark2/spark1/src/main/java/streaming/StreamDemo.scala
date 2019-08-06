@@ -1,14 +1,17 @@
 package streaming
 
+import java.io.{File, FileWriter, PrintWriter}
+
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object StreamDemo {
+
   def main(args: Array[String]): Unit = {
     //local 必须大于2
     val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
     //创建流的上下文 批次时长的话1s
-    val ssc = new StreamingContext(conf, Seconds(1))
+    val ssc = new StreamingContext(conf, Seconds(4))
     //创建socket 文本流
     val lines = ssc.socketTextStream("192.168.164.131", 9999)
     //分割

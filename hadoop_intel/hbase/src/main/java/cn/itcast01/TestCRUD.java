@@ -40,9 +40,11 @@ public class TestCRUD {
         //创建conf配置对象
         Configuration conf = HBaseConfiguration.create();
         //通过连接工厂创建连接对象
+        conf.set("hbase.zookeeper.quorum", "192.168.2.49:2181,192.168.2.50:2181,192.168.2.60:2181");
+        conf.set("zookeeper.znode.parent", "/hbase-unsecure");
         Connection conn = ConnectionFactory.createConnection(conf);
         //创建表名对象
-        TableName tName = TableName.valueOf("nn1:t1");
+        TableName tName = TableName.valueOf("default:ceshi");
         Table table = conn.getTable(tName);
         //通过bytes工具类创建字节数组(将字符串)
         byte[] rowid = Bytes.toBytes("row9999");
@@ -51,7 +53,7 @@ public class TestCRUD {
 
         Put put = new Put(rowid);
         //添加列的对象
-        byte[] f1 = Bytes.toBytes("fl");
+        byte[] f1 = Bytes.toBytes("f1");
         byte[] id = Bytes.toBytes("id");
         byte[] value = Bytes.toBytes(1000);
         put.addColumn(f1, id, value);

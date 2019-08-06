@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JsonLogProcessModel/JsonLogProcessModel.iml" filepath="$PROJECT_DIR$/JsonLogProcessModel/JsonLogProcessModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserPortraitModule/UserPortraitModule.iml" filepath="$PROJECT_DIR$/UserPortraitModule/UserPortraitModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taggenerator.iml" filepath="$PROJECT_DIR$/taggenerator.iml" />
+    </modules>
+  </component>
+</project>
