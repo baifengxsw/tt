@@ -5,6 +5,7 @@ public class InsertSort {
 		if( arr.length<2 || arr==null)
 			return;
 		for ( int i =1 ;i<arr.length;i++) {
+			//这里需要注意一下
 			for(int j = i-1;j >=0&&arr[j]>arr[j+1];j--) {
 				swap(arr,j ,j+1);
 			}

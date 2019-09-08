@@ -1,6 +1,9 @@
 package cn.itcast10_list;
 
 import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * 按一定的规则调整链表
@@ -118,6 +121,8 @@ public class ReLocateList {
 		printLinkedList(head);
 		reLocate(head);
 		printLinkedList(head);
+		
+	
 		
 	}
 }

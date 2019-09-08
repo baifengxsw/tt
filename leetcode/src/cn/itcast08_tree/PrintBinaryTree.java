@@ -21,7 +21,7 @@ public class PrintBinaryTree {
 		if (head == null) {
 			return;
 		}
-		printInOrder(head.right, height + 1, "v", len);
+		printInOrder(head.right, height + 1, "(", len);
 		String val = to + head.value + to;
 		int lenM = val.length();
 		int lenL = (len - lenM) / 2;

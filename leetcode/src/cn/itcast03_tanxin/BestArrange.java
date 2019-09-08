@@ -41,12 +41,7 @@ public class BestArrange {
 		
 	}
 	public static void main(String[] args) {
-		Node node1 = new Node(1,7);
-		Node node2 = new Node(6,9);
-		Node node3 = new Node(8,16);
-		Node [] nodes = {node1,node2,node3};
-		int res = bestArrange(nodes, 0);
-		System.out.println("res:"+res);
+	  System.out.println(Integer.valueOf("c",14));
 	}
 
 }

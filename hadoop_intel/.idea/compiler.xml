@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Avro" />
         <module name="flume" />
+        <module name="flume_streaming" />
         <module name="hbase" />
         <module name="hdfs" />
         <module name="hivedemo" />
@@ -22,6 +23,7 @@
     <bytecodeTargetLevel>
       <module name="Avro" target="1.7" />
       <module name="flume" target="1.7" />
+      <module name="flume_streaming" target="1.7" />
       <module name="hbase" target="1.6" />
       <module name="hdfs" target="1.7" />
       <module name="hivedemo" target="1.7" />

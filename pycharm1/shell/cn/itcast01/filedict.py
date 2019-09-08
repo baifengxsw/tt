@@ -4,9 +4,5 @@
 
 import  os
 import glob
-
-dir = os.path.dirname(__file__)
-print(os.path.join(dir,'*.a.txt'))
-print(glob.glob(os.path.join(dir,'*.a.txt')))
-
-os.remove()
+import datetime
+import time
